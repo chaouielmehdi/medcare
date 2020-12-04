@@ -1,13 +1,12 @@
 import './App.css';
 import Header from './components/header/header';
+import Home from './components/home/home';
 
 const App = () => {
   return (
     <>
 		<Header />
-		<div className="App mt-5">
-			Welcome
-		</div>
+		<Home />
     </>
   );
 }
