@@ -6,9 +6,9 @@ function Home() {
 	return (
 		<div className="container-fluid">
 			<div className="row d-flex justify-content-around bg-info mt-3">
-				<div className="col-5 border text-center my-3">
-					<div className="border">
-						<button type="button" className="btn btn-light mx-2">
+				<div className="col-7 border text-center align-self-center my-3">
+					<div className="h-25 border">
+						<button type="button" className=" d-inline-block btn btn-light mx-2">
 							<i className="fas fa-building mr-2"></i>
 							Au cabinet
 						</button>
@@ -23,7 +23,7 @@ function Home() {
 
 					<div className="border m-5">
 						<div className="input-group mb-3">
-							<div className="input-group-prepend">
+							<div className="input-group-prepend ">
 								<span className="input-group-text" id="basic-addon1">
 									<i className="fas fa-user-md"></i>
 								</span>
@@ -69,7 +69,7 @@ function Home() {
 					</div>
 				</div>
 
-				<div className=" col-7 border text-center my-3">
+				<div className=" col-5 border text-center my-3">
 					<p>Trouvez votre médcin et prenez rendez-vous ! </p>
 					<div className="doctor1 rounded m-5">
 						<img src={Doctor1} alt="" />
