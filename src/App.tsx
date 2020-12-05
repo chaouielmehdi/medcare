@@ -1,14 +1,18 @@
 import './App.css';
-import Header from './components/header/header';
-import Home from './components/home/home';
+import Header from './pages/header/header';
+import About from './pages/about/about';
+import Home from './pages/home/home';
 
 const App = () => {
-  return (
-    <>
-		<Header />
-		<Home />
-    </>
-  );
-}
+	return (
+		<>
+			<Header />
+			<div className="py-5">
+				<Home />
+				{/* <About /> */}
+			</div>
+		</>
+	);
+};
 
 export default App;

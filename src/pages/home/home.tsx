@@ -1,6 +1,6 @@
-import React from "react";
-import "./home.css";
-import Doctor1 from "../../assets/img/Doctor1.png";
+import React from 'react';
+import './home.css';
+import Doctor1 from '../../assets/img/Doctor1.png';
 
 function Home() {
 	return (
