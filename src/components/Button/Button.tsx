@@ -18,8 +18,14 @@ interface IButtonProps {
 	onClick?: (event: React.MouseEvent) => void;
 }
 
-const Button: FC<IProps & IButtonProps> = ({ children, className, icon, type, onClick }): ReactElement => {
-	const buttonClass = [className, 'btn', type ? 'btn-' + type : 'btn-light'].join(' ');
+const Button: FC<IProps & IButtonProps> = ({
+	children,
+	className,
+	icon,
+	type = 'light',
+	onClick,
+}): ReactElement => {
+	const buttonClass = className + ' border btn btn-' + type;
 	const iconClass = 'mr-2 fas fa-' + icon;
 
 	return (
