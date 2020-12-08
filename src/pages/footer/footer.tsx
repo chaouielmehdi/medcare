@@ -1,6 +1,7 @@
 import React from "react";
 import "./footer.css";
 import logo from "../../assets/img/logo.png";
+import Row from "../../components/Row/Row";
 
 interface ILink {
 	label: string;
@@ -15,27 +16,21 @@ function Footer() {
 	];
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light box-shadow">
-			<div className="container-fluid-nav align-items-center">
-				<div className="border container-fluid ">
-					<a className="navbar-brand d-flex align-items-center" href="/">
-						<img src={logo} width="30" alt="logo" className="mr-2" />
-						<span className="c-green font-weight-bold">MedCare 2.0</span>
+		<>
+			<Row flex={{ justify: "center" }} isShadowed={false}>
+				<a className="align-items-center" href="/">
+					<img src={logo} width="30" alt="logo" className="mr-2" />
+					<span className="c-green font-weight-bold">MedCare 2.0</span>
+				</a>
+			</Row>
+			<Row flex={{ justify: "around" }} isShadowed={false}>
+				{links.map((link, index) => (
+					<a key={index} className="nav-link" href={link.url}>
+						{link.label}
 					</a>
-				</div>
-				<div className="navbar-text border">
-					<ul className="navbar-nav mr-auto">
-						{links.map((link, index) => (
-							<li key={index} className="nav-item">
-								<a className="nav-link" href={link.url}>
-									{link.label}
-								</a>
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
-		</nav>
+				))}
+			</Row>
+		</>
 	);
 }
 

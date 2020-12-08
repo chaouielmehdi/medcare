@@ -20,7 +20,7 @@ function Header() {
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light box-shadow">
-			<div className="d-flex justify-content-between w-100">
+			<div className=" d-flex justify-content-between w-100">
 				<div>
 					<a className="navbar-brand d-flex align-items-center" href="/">
 						<img src={logo} width="30" alt="logo" className="mr-2" />

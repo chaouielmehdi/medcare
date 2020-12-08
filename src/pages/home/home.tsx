@@ -11,7 +11,7 @@ import Input from "../../components/Input/Input";
 function Home() {
 	return (
 		<Container>
-			<Row isShadowed={true} isBorderedRadius={true} className="d-flex align-items-center p-4">
+			<Row isShadowed={true} className="d-flex align-items-center p-4">
 				<div className="col-7 text-center align-self-center my-3">
 					<div className="h-25 ">
 						<Button className="mx-2" icon="building" type="light">
@@ -68,7 +68,7 @@ function Home() {
 				</div>
 			</Row>
 
-			<Row isShadowed={true} isBorderedRadius={true} className="d-flex align-items-center p-4 mt-3">
+			<Row isShadowed={true} className="d-flex align-items-center p-4 mt-3">
 				<div className=" col-5  text-center my-3">
 					<p>Trouvez votre pharmacie et commandez vos produits de santé ! </p>
 					<div className="doctor1 rounded m-5">
@@ -104,7 +104,7 @@ function Home() {
 				</div>
 			</Row>
 
-			<Row isShadowed={true} isBorderedRadius={false} className="section-block d-flex flex-column p-4 mt-3">
+			<Row isShadowed={true} className="section-block d-flex flex-column p-4 mt-3">
 				<div>
 					<div className="head-text text-center my-3">
 						<p>Téléconsultation via MedCare 2.0, comment ça marche ? </p>
@@ -129,7 +129,7 @@ function Home() {
 					</div>
 				</div>
 			</Row>
-			<Row isShadowed={true} isBorderedRadius={false} className="section-block d-flex flex-column p-4 mt-3">
+			<Row isShadowed={true} className="section-block d-flex flex-column p-4 mt-3">
 				<div>
 					<div className="head-text text-center my-3">
 						<p>Télépharmacie via MedCare 2.0, comment ça marche ? </p>
