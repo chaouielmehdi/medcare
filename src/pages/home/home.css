@@ -5,3 +5,26 @@
 .margin {
 	margin: 10px;
 }
+
+.box-border {
+	text-align: center;
+	height: 160px;
+	width: 240px;
+	border: 2px dashed;
+}
+
+.section-block {
+	background-color: #e7e7e7;
+}
+
+.head-text {
+	font-size: 28px;
+	text-align: center;
+	font-weight: bold;
+	color: rgb(27, 175, 175);
+}
+
+.font-txt {
+	font-size: 20px;
+	text-align: center;
+}

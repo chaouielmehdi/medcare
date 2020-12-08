@@ -1,7 +1,8 @@
-import './App.css';
-import Header from './pages/header/header';
-import About from './pages/about/about';
-import Home from './pages/home/home';
+import "./App.css";
+import Header from "./pages/header/header";
+import Footer from "./pages/footer/footer";
+import About from "./pages/about/about";
+import Home from "./pages/home/home";
 
 const App = () => {
 	return (
@@ -11,6 +12,7 @@ const App = () => {
 				<Home />
 				{/* <About /> */}
 			</div>
+			<Footer />
 		</>
 	);
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import "./header.css";
+import "./footer.css";
 import logo from "../../assets/img/logo.png";
 
 interface ILink {
@@ -7,27 +7,23 @@ interface ILink {
 	url: string;
 }
 
-function Header() {
+function Footer() {
 	const links: ILink[] = [
-		{ url: "", label: "Acceuil" },
-		{ url: "", label: "A propos" },
-		{ url: "", label: "Espace Médcin" },
-		{ url: "", label: "Espace Pharmacie" },
-		{ url: "", label: "Connexion" },
-		{ url: "", label: "FAQ" },
-		{ url: "", label: "Contactez-nous" },
+		{ url: "", label: "politique de confidentialité" },
+		{ url: "", label: "Copyright © 2020, tous droits réservés" },
+		{ url: "", label: "Condition générale d'utilisation" },
 	];
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light box-shadow">
-			<div className="d-flex justify-content-between w-100">
-				<div>
+			<div className="container-fluid-nav align-items-center">
+				<div className="border container-fluid ">
 					<a className="navbar-brand d-flex align-items-center" href="/">
 						<img src={logo} width="30" alt="logo" className="mr-2" />
 						<span className="c-green font-weight-bold">MedCare 2.0</span>
 					</a>
 				</div>
-				<div>
+				<div className="navbar-text border">
 					<ul className="navbar-nav mr-auto">
 						{links.map((link, index) => (
 							<li key={index} className="nav-item">
@@ -43,4 +39,4 @@ function Header() {
 	);
 }
 
-export default Header;
+export default Footer;
