@@ -1,11 +1,11 @@
-import React from 'react';
-import Button, { ButtonType } from '../../components/Button/Button';
-import Container from '../../components/Container/Container';
-import Row from '../../components/Row/Row';
-import { smoothScroll } from '../../services/smoothScroll';
+import React from "react";
+import Button, { ButtonType } from "../../components/Button/Button";
+import Container from "../../components/Container/Container";
+import Row from "../../components/Row/Row";
+import { smoothScroll } from "../../services/smoothScroll";
 
-import logo from '../../assets/img/logo.png';
-import './about.css';
+import logo from "../../assets/img/logo.png";
+import "./about.css";
 
 interface IButton {
 	label: string;
@@ -17,22 +17,22 @@ interface IButton {
 function About() {
 	const buttons: IButton[] = [
 		{
-			label: 'Patient',
-			type: 'light',
-			icon: 'user-injured',
-			url: 'PATIENT',
+			label: "Patient",
+			type: "light",
+			icon: "user-injured",
+			url: "PATIENT",
 		},
 		{
-			label: 'Médecin',
-			type: 'light',
-			icon: 'user-md',
-			url: 'DOCTOR',
+			label: "Médecin",
+			type: "light",
+			icon: "user-md",
+			url: "DOCTOR",
 		},
 		{
-			label: 'Pharmacien',
-			type: 'light',
-			icon: 'clinic-medical',
-			url: 'PHARMACY',
+			label: "Pharmacien",
+			type: "light",
+			icon: "clinic-medical",
+			url: "PHARMACY",
 		},
 	];
 
@@ -42,14 +42,13 @@ function About() {
 
 	return (
 		<Container>
-			<Row flex={{ align: 'center' }} className="p-4">
+			<Row flex={{ align: "center" }} className="p-4">
 				<div className="col-7">
 					<h3 className="pt-4 c-green">Medcare 2.0: Santé et confort, qui dit mieux ?</h3>
 					<p>
-						MedCare 2.0 est une entreprise marocaine qui se situe à Tanger et qui met en contact,
-						par le biais d'une plateforme numérique de télémédecine, de vente en ligne et de
-						livraison à domicile des produits de santé, trois acteurs (patient, médecin et
-						pharmacien)
+						MedCare 2.0 est une entreprise marocaine qui se situe à Tanger et qui met en contact, par le
+						biais d'une plateforme numérique de télémédecine, de vente en ligne et de livraison à domicile
+						des produits de santé, trois acteurs (patient, médecin et pharmacien)
 					</p>
 
 					<div className="d-flex justify-content-start mt-5">
@@ -74,7 +73,7 @@ function About() {
 				</div>
 			</Row>
 
-			<Row flex={{ align: 'center' }} className="p-4 mt-5">
+			<Row flex={{ align: "center" }} className="p-4 mt-5">
 				<div className="col-5 text-center" id="PATIENT">
 					<i className="fas fa-user-injured icon-larger c-green"></i>
 				</div>
@@ -96,20 +95,19 @@ function About() {
 						<li>Recherche des pharmacies par nom et par localisation</li>
 						<li>Consultation des différentes informations sur les pharmacies</li>
 						<li>
-							Affichage de l'état d'ouverture des pharmacies et la disponibilité en temps réel
-							de leurs produits
+							Affichage de l'état d'ouverture des pharmacies et la disponibilité en temps réel de leurs
+							produits
 						</li>
 						<li>Passation des commandes chez une pharmacie de votre choix</li>
 						<li>
-							Facilitation des transactions par paiement en ligne avec la carte bancaire de
-							votre choix
+							Facilitation des transactions par paiement en ligne avec la carte bancaire de votre choix
 						</li>
 					</ul>
 					<h5>Livraison à domicile des produits de santé</h5>
 				</div>
 			</Row>
 
-			<Row flex={{ align: 'center' }} className="p-4 mt-5">
+			<Row flex={{ align: "center" }} className="p-4 mt-5">
 				<div className="col-7" id="DOCTOR">
 					<h3 className="pt-4 c-green">POUR LE MEDECIN</h3>
 					<h5>Gestion de l'agenda des rendez-vous</h5>
@@ -122,8 +120,7 @@ function About() {
 					<h5>Réalisation de la téléconsultation</h5>
 					<ul>
 						<li>
-							Génération d’un lien de visioconférence différent pour chaque session de
-							téléconsultation
+							Génération d’un lien de visioconférence différent pour chaque session de téléconsultation
 						</li>
 						<li>Envoi des ordonnances informatisées </li>
 						<li>Paiement en ligne sécurisé</li>
@@ -134,7 +131,7 @@ function About() {
 				</div>
 			</Row>
 
-			<Row flex={{ align: 'center' }} className="p-4 mt-5">
+			<Row flex={{ align: "center" }} className="p-4 mt-5">
 				<div className="col-5 text-center" id="PHARMACY">
 					<i className="fas fa-clinic-medical icon-larger c-green"></i>
 				</div>

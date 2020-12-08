@@ -3,6 +3,7 @@ import About from './pages/about/about';
 import Home from './pages/home/home';
 import Doctors from './pages/search/doctors/doctors';
 import Pharmacies from './pages/search/pharmacies/pharmacies';
+import Footer from './pages/footer/footer';
 
 const App = () => {
 	return (
@@ -14,6 +15,7 @@ const App = () => {
 				{/* <Doctors /> */}
 				<Pharmacies />
 			</div>
+			<Footer />
 		</>
 	);
 };
