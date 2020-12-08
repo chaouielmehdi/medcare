@@ -76,7 +76,7 @@ function About() {
 
 			<Row flex={{ align: 'center' }} className="p-4 mt-5">
 				<div className="col-5 text-center" id="PATIENT">
-					<i className="fas fa-user-injured icon-large c-green"></i>
+					<i className="fas fa-user-injured icon-larger c-green"></i>
 				</div>
 
 				<div className="col-7">
@@ -130,13 +130,13 @@ function About() {
 					</ul>
 				</div>
 				<div className="col-5 text-center">
-					<i className="fas fa-user-md icon-large c-green"></i>
+					<i className="fas fa-user-md icon-larger c-green"></i>
 				</div>
 			</Row>
 
 			<Row flex={{ align: 'center' }} className="p-4 mt-5">
 				<div className="col-5 text-center" id="PHARMACY">
-					<i className="fas fa-clinic-medical icon-large c-green"></i>
+					<i className="fas fa-clinic-medical icon-larger c-green"></i>
 				</div>
 				<div className="col-7">
 					<h3 className="pt-4 c-green">POUR LE PHARMACIEN</h3>

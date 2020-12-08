@@ -31,3 +31,16 @@ body {
 	color: #3d4747;
 	background-color: #86949411;
 }
+
+/* icon size */
+.icon-medium {
+	font-size: 80px;
+}
+
+.icon-large {
+	font-size: 150px;
+}
+
+.icon-larger {
+	font-size: 250px;
+}
