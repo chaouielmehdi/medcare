@@ -3,19 +3,28 @@ import { IProps } from '../../types/IProps';
 
 interface IRowProps {
 	isShadowed?: boolean;
-	isBorderedRadius?: boolean;
+	flex?: {
+		justify?: 'start' | 'end' | 'center' | 'between' | 'around';
+		align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch';
+	};
 }
 
-const Row: FC<IProps & IRowProps> = ({ children, className, isShadowed, isBorderedRadius }): ReactElement => {
-	const rowClass: string = [
-		'row',
-		'm-1',
-		className,
-		isShadowed ? 'box-shadow' : '',
-		isBorderedRadius ? 'border-radius' : '',
-	].join(' ');
+const Row: FC<IProps & IRowProps> = ({ children, className, isShadowed = true, flex }): ReactElement => {
+	let flexClass = ' ';
 
-	return <div className={rowClass}>{children}</div>;
+	if (flex) {
+		flexClass += [
+			'd-flex',
+			flex.align ? 'align-items-' + flex.align : '',
+			flex.justify ? 'justify-content-' + flex.justify : '',
+		].join(' ');
+	}
+
+	const rowClass: string = [className, 'row', 'm-0', 'border-radius', isShadowed ? 'box-shadow' : ''].join(
+		' '
+	);
+
+	return <div className={rowClass + flexClass}>{children}</div>;
 };
 
 export default Row;

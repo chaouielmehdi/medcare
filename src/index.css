@@ -4,6 +4,7 @@ body {
 		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	color: #3d4747;
 }
 
 /* colors */
@@ -17,10 +18,16 @@ body {
 
 /* shadows */
 .box-shadow {
-	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* borders */
 .border-radius {
 	border-radius: 5px;
+}
+
+/* badge */
+.badge-light {
+	color: #3d4747;
+	background-color: #86949411;
 }
