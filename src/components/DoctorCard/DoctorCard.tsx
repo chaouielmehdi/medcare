@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 
 import DoctorMale from '../../assets/img/Doctor-Male.png';
 import DoctorFemale from '../../assets/img/Doctor-Female.png';
+import Icon from '../Icon/Icon';
 
 interface IConsBtnProps {
 	type: 'video' | 'cabinet' | 'home';
@@ -26,8 +27,6 @@ const DoctorCard: FC<IDoctorCardProps> = ({ className, doctor }): ReactElement =
 				{field.value}
 			</span>
 		));
-
-	const icon = (iconName: string) => <i className={'mr-2 fas fa-' + iconName}></i>;
 
 	const consultationButton = ({ type, label, icon }: IConsBtnProps) =>
 		doctor.consultation[type].available && (
@@ -53,21 +52,21 @@ const DoctorCard: FC<IDoctorCardProps> = ({ className, doctor }): ReactElement =
 					<Row flex={{ align: 'start', justify: 'between' }} isShadowed={false}>
 						<div className="col-6 p-0">
 							<span className="d-block my-1">
-								{icon('briefcase-medical')}
+								<Icon name="briefcase-medical" className="mr-2" />
 								{fields()}
 							</span>
 							<span className="d-block my-1">
-								{icon('map-marker-alt')}
+								<Icon name="map-marker-alt" className="mr-2" />
 								{doctor.address}
 							</span>
 						</div>
 						<div className="col-6 border-left p-0 pl-3">
 							<span className="d-block my-1">
-								{icon('phone')}
+								<Icon name="phone" className="mr-2" />
 								{doctor.phone}
 							</span>
 							<span className="d-block my-1">
-								{icon('envelope')}
+								<Icon name="envelope" className="mr-2" />
 								{doctor.email}
 							</span>
 						</div>
