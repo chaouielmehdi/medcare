@@ -1,38 +1,30 @@
-import { type } from "os";
-import React, { FC, ReactElement } from "react";
-import { IProps } from "../../types/IProps";
+import React, { FC, ReactElement } from 'react';
+import { IProps } from '../../types/IProps';
 
-export type InputType = "text" | "checkbox" | "radio";
-export type iconPosition = "prepend" | "append";
+type InputType = 'text' | 'checkbox' | 'radio';
+type IconPosition = 'prepend' | 'append';
 
 interface IInputProps {
 	type?: InputType;
 	icon?: string;
-	iconPos?: iconPosition;
-	label: string;
-	onClick?: (event: React.MouseEvent) => void;
+	iconPos?: IconPosition;
 }
 
-const Input: FC<IProps & IInputProps> = ({ placeholder, label, icon, iconPos, type }): ReactElement => {
-	const placeholderText = placeholder;
-	const iconPosition = ["input-group-", iconPos].join("");
-	const iconClass = "fas fa-" + icon;
+const Input: FC<IProps & IInputProps> = ({ placeholder, icon, iconPos, type }): ReactElement => {
+	const iconPosition = 'input-group-' + iconPos;
+	const iconClass = 'fas fa-' + icon;
 
 	return (
 		<>
-			{iconPos == "prepend" && (
+			{iconPos === 'prepend' && (
 				<div className={iconPosition}>
-					<span className="input-group-text" id="basic-addon1">
-						{icon && iconPos && <i className={iconClass}></i>}
-					</span>
+					<span className='input-group-text'>{icon && <i className={iconClass}></i>}</span>
 				</div>
 			)}
-			<input type={type} className="form-control" placeholder={placeholderText} aria-label={label} />
-			{iconPos == "append" && (
+			<input type={type} className='form-control' placeholder={placeholder} />
+			{iconPos === 'append' && (
 				<div className={iconPosition}>
-					<span className="input-group-text" id="basic-addon1">
-						{icon && iconPos && <i className={iconClass}></i>}
-					</span>
+					<span className='input-group-text'>{icon && <i className={iconClass}></i>}</span>
 				</div>
 			)}
 		</>
