@@ -21,6 +21,11 @@ body {
 	color: #869494;
 }
 
+/* button */
+.btn-info {
+	background-color: #329897;
+}
+
 /* shadows */
 .box-shadow {
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);

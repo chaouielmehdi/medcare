@@ -39,7 +39,7 @@ function Doctors() {
 					</Row>
 					<Row isShadowed={false} flex={{ justify: 'around', align: 'center' }} className="mb-5">
 						<div>
-							<Button className="ml-5 mt-3" icon="search" type="light">
+							<Button className="mt-3" icon="search" type="light">
 								Chercher
 							</Button>
 						</div>
