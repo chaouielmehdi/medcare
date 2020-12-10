@@ -15,6 +15,7 @@ export type ButtonType =
 interface IButtonProps {
 	type?: ButtonType;
 	icon?: string;
+	disabled?: boolean;
 	onClick?: (event: React.MouseEvent) => void;
 }
 
@@ -23,13 +24,14 @@ const Button: FC<IProps & IButtonProps> = ({
 	className,
 	icon,
 	type = 'light',
+	disabled,
 	onClick,
 }): ReactElement => {
 	const buttonClass = className + ' border btn btn-' + type;
 	const iconClass = 'mr-2 fas fa-' + icon;
 
 	return (
-		<button onClick={onClick} type="button" className={buttonClass}>
+		<button disabled={disabled} onClick={onClick} type="button" className={buttonClass}>
 			{icon && <i className={iconClass}></i>}
 			{children}
 		</button>

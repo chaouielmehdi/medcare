@@ -59,10 +59,16 @@ const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine }): ReactEle
 							className="mt-2"
 						>
 							<div className="d-flex align-items-center">
-								Quantité : <Input type="number" className="ml-2" width={70} />
+								Quantité :
+								<Input
+									disabled={medicine.quantity === 0}
+									type="number"
+									className="ml-2"
+									width={70}
+								/>
 							</div>
 							<div>
-								<Button icon="shopping-cart" type="info">
+								<Button disabled={medicine.quantity === 0} icon="shopping-cart" type="info">
 									Ajouter au panier
 								</Button>
 							</div>

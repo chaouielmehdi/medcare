@@ -10,6 +10,7 @@ interface IInputProps {
 	iconPos?: IconPosition;
 	width?: number;
 	placeholder?: string;
+	disabled?: boolean;
 }
 
 const Input: FC<IProps & IInputProps> = ({
@@ -19,6 +20,7 @@ const Input: FC<IProps & IInputProps> = ({
 	type,
 	className,
 	width,
+	disabled,
 }): ReactElement => {
 	const iconPosition = 'input-group-' + iconPos;
 	const iconClass = 'fas fa-' + icon;
@@ -35,6 +37,7 @@ const Input: FC<IProps & IInputProps> = ({
 				className={className + ' form-control'}
 				placeholder={placeholder}
 				style={{ width }}
+				disabled={disabled}
 			/>
 			{iconPos === 'append' && (
 				<div className={iconPosition}>

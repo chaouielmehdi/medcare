@@ -22,7 +22,9 @@ body {
 }
 
 /* button */
-.btn-info {
+.btn-info,
+.btn-info.disabled,
+.btn-info:disabled {
 	background-color: #329897;
 }
 
