@@ -6,8 +6,23 @@ import Input from '../../../components/Input/Input';
 import PharmacyCard from '../../../components/PharmacyCard/PharmacyCard';
 import Row from '../../../components/Row/Row';
 import { pharmacies } from '../../../models/Pharmacy';
+import { cities } from '../../../models/IdValueData';
+import { useState } from 'react';
 
 function Pharmacies() {
+	const [filteredPharmacies, setPharmacies] = useState(pharmacies);
+	const filterCities = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		const cityName = cities.find((city) => +event.target.value === city.id)?.value;
+		if (cityName) {
+			const listPharmacies = pharmacies.filter((pharmacy) =>
+				pharmacy.address.toLowerCase().includes(cityName.toLowerCase())
+			);
+			console.log(listPharmacies);
+			setPharmacies(listPharmacies);
+		} else if (+event.target.value === -1) {
+			setPharmacies(pharmacies);
+		}
+	};
 	return (
 		<Container>
 			<>
@@ -15,8 +30,8 @@ function Pharmacies() {
 					<div className='head-text text-center my-3'>
 						<p>Trouvez votre pharmacie</p>
 					</div>
-					<Row isShadowed={false} flex={{ justify: 'around', align: 'center' }} className='mb-5'>
-						<div className='input-group col-4 ml-5'>
+					<Row isShadowed={false} flex={{ justify: 'center', align: 'center' }} className='mb-5'>
+						<div className='input-group col-4'>
 							<Input
 								placeholder='Entrer le nom de la pharmacie'
 								icon='clinic-medical'
@@ -26,27 +41,24 @@ function Pharmacies() {
 						<div className=' col-1'>
 							<p className='text-center m-0'>Ou</p>
 						</div>
-						<div className='input-group col-4 '>
+						<div className='input-group col-4'>
 							<div className='input-group-prepend'>
 								<span className='input-group-text'>
 									<i className='fas fa-map-marker-alt'></i>
 								</span>
 							</div>
-							<select className='custom-select' id='inputGroupSelect01'>
-								<option selected>Choisir une ville...</option>
-								<option value='1'>One</option>
-								<option value='2'>Two</option>
-								<option value='3'>Three</option>
+							<select defaultValue={-1} className='custom-select' onChange={filterCities}>
+								<option value={-1}>Toute les villes</option>
+								{cities.map((city, index) => (
+									<option key={index} value={city.id}>
+										{city.value}
+									</option>
+								))}
 							</select>
-						</div>
-						<div className='input-group col-2'>
-							<Button className='mr-5' icon='search' type='light'>
-								Chercher
-							</Button>
 						</div>
 					</Row>
 				</div>
-				{pharmacies.map((pharmacy, index) => (
+				{filteredPharmacies.map((pharmacy, index) => (
 					<PharmacyCard key={index} className='mb-4' pharmacy={pharmacy} />
 				))}
 			</>
