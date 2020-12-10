@@ -184,3 +184,22 @@ export const fields: IdValueData[] = [
 		value: 'La neurochirurgie',
 	},
 ];
+
+export const cities: IdValueData[] = [
+	{
+		id: 0,
+		value: 'Casablanca',
+	},
+	{
+		id: 1,
+		value: 'Rabat',
+	},
+	{
+		id: 2,
+		value: 'Tanger',
+	},
+	{
+		id: 3,
+		value: 'Fes',
+	},
+];
