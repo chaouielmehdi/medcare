@@ -12,14 +12,7 @@ interface IInputProps {
 	defaultValue?: number;
 }
 
-const Input: FC<IProps & IInputProps> = ({
-	placeholder,
-	icon,
-	iconPos,
-	type,
-	onChange,
-	defaultValue,
-}): ReactElement => {
+const Input: FC<IProps & IInputProps> = ({ icon, iconPos, type, onChange, defaultValue }): ReactElement => {
 	const iconPosition = 'input-group-' + iconPos;
 	const iconClass = 'fas fa-' + icon;
 
@@ -30,13 +23,7 @@ const Input: FC<IProps & IInputProps> = ({
 					<span className='input-group-text'>{icon && <i className={iconClass}></i>}</span>
 				</div>
 			)}
-			<input
-				type={type}
-				className='form-control'
-				placeholder={placeholder}
-				onChange={onChange}
-				defaultValue={defaultValue}
-			/>
+			<input type={type} className='form-control' onChange={onChange} defaultValue={defaultValue} />
 			{iconPos === 'append' && (
 				<div className={iconPosition}>
 					<span className='input-group-text'>{icon && <i className={iconClass}></i>}</span>
