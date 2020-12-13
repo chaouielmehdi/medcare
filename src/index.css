@@ -4,7 +4,12 @@ body {
 		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
 	color: #3d4747;
+}
+
+.main {
+	min-height: calc(100vh) !important;
 }
 
 /* colors */
@@ -14,6 +19,13 @@ body {
 
 .c-grey {
 	color: #869494;
+}
+
+/* button */
+.btn-info,
+.btn-info.disabled,
+.btn-info:disabled {
+	background-color: #329897;
 }
 
 /* shadows */

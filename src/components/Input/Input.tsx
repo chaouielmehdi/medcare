@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { IProps } from '../../types/IProps';
 
-type InputType = 'text' | 'checkbox' | 'radio';
+type InputType = 'text' | 'checkbox' | 'radio' | 'number';
 type IconPosition = 'prepend' | 'append';
 
 interface IInputProps {

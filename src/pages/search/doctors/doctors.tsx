@@ -12,37 +12,41 @@ function Doctors() {
 			<>
 				<div>
 					<Row isShadowed={false} flex={{ justify: 'center', align: 'center' }}>
-						<Button className='mx-2' icon='building' type='light'>
+						<Button className="mx-2" icon="building" type="light">
 							Au cabinet
 						</Button>
-						<Button className='mx-2' icon='video' type='light'>
+						<Button className="mx-2" icon="video" type="light">
 							En video
 						</Button>
-						<Button className='mx-2' icon='home' type='light'>
+						<Button className="mx-2" icon="home" type="light">
 							A domicile
 						</Button>
 					</Row>
-					<Row isShadowed={false} flex={{ justify: 'around', align: 'center' }} className='mt-3'>
-						<div className='input-group col-4'>
-							<Input placeholder='Chercher un médecin' icon='user-md' iconPos='prepend' />
+					<Row isShadowed={false} flex={{ justify: 'around', align: 'center' }} className="mt-3">
+						<div className="input-group col-4">
+							<Input placeholder="Chercher un médecin" icon="user-md" iconPos="prepend" />
 						</div>
-						<div className='input-group col-4'>
-							<Input placeholder='Choisir une spécialité' icon='briefcase-medical' iconPos='prepend' />
+						<div className="input-group col-4">
+							<Input
+								placeholder="Choisir une spécialité"
+								icon="briefcase-medical"
+								iconPos="prepend"
+							/>
 						</div>
-						<div className='input-group col-4'>
-							<Input placeholder='Choisir une ville' icon='map-marker-alt' iconPos='prepend' />
+						<div className="input-group col-4">
+							<Input placeholder="Choisir une ville" icon="map-marker-alt" iconPos="prepend" />
 						</div>
 					</Row>
-					<Row isShadowed={false} flex={{ justify: 'around', align: 'center' }} className='mb-5'>
+					<Row isShadowed={false} flex={{ justify: 'around', align: 'center' }} className="mb-5">
 						<div>
-							<Button className='ml-5 mt-3' icon='search' type='light'>
+							<Button className="mt-3" icon="search" type="light">
 								Chercher
 							</Button>
 						</div>
 					</Row>
 				</div>
 				{doctors.map((doctor, index) => (
-					<DoctorCard key={index} className='mb-4' doctor={doctor} />
+					<DoctorCard key={index} className="mb-4" doctor={doctor} />
 				))}
 			</>
 		</Container>

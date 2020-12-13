@@ -80,7 +80,6 @@ export const doctors: Doctor[] = [
 		},
 		fields: [fields[4], fields[12]],
 	},
-
 	{
 		id: 2,
 		name: 'Mohamed Alami',
