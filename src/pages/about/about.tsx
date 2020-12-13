@@ -1,11 +1,11 @@
-import React from "react";
-import Button, { ButtonType } from "../../components/Button/Button";
-import Container from "../../components/Container/Container";
-import Row from "../../components/Row/Row";
-import { smoothScroll } from "../../services/smoothScroll";
+import React from 'react';
+import Button, { ButtonType } from '../../components/Button/Button';
+import Container from '../../components/Container/Container';
+import Row from '../../components/Row/Row';
+import { smoothScroll } from '../../services/smoothScroll';
 
-import logo from "../../assets/img/logo.png";
-import "./about.css";
+import logo from '../../assets/img/logo.png';
+import './about.css';
 
 interface IButton {
 	label: string;
@@ -17,22 +17,22 @@ interface IButton {
 function About() {
 	const buttons: IButton[] = [
 		{
-			label: "Patient",
-			type: "light",
-			icon: "user-injured",
-			url: "PATIENT",
+			label: 'Patient',
+			type: 'light',
+			icon: 'user-injured',
+			url: 'PATIENT',
 		},
 		{
-			label: "Médecin",
-			type: "light",
-			icon: "user-md",
-			url: "DOCTOR",
+			label: 'Médecin',
+			type: 'light',
+			icon: 'user-md',
+			url: 'DOCTOR',
 		},
 		{
-			label: "Pharmacien",
-			type: "light",
-			icon: "clinic-medical",
-			url: "PHARMACY",
+			label: 'Pharmacien',
+			type: 'light',
+			icon: 'clinic-medical',
+			url: 'PHARMACY',
 		},
 	];
 
@@ -42,23 +42,23 @@ function About() {
 
 	return (
 		<Container>
-			<Row flex={{ align: "center" }} className="p-4">
-				<div className="col-7">
-					<h3 className="pt-4 c-green">Medcare 2.0: Santé et confort, qui dit mieux ?</h3>
+			<Row flex={{ align: 'center' }} className='p-4'>
+				<div className='col-7'>
+					<h3 className='pt-4 c-green'>Medcare 2.0: Santé et confort, qui dit mieux ?</h3>
 					<p>
 						MedCare 2.0 est une entreprise marocaine qui se situe à Tanger et qui met en contact, par le
 						biais d'une plateforme numérique de télémédecine, de vente en ligne et de livraison à domicile
 						des produits de santé, trois acteurs (patient, médecin et pharmacien)
 					</p>
 
-					<div className="d-flex justify-content-start mt-5">
+					<div className='d-flex justify-content-start mt-5'>
 						{buttons.map((button, index) => (
 							<Button
 								key={index}
 								onClick={handleClick(button.url)}
 								type={button.type}
 								icon={button.icon}
-								className="mr-3"
+								className='mr-3'
 							>
 								{button.label}
 							</Button>
@@ -66,20 +66,20 @@ function About() {
 					</div>
 				</div>
 
-				<div className="col-5 text-center">
-					<img src={logo} width="200" alt="logo" className="mr-2" />
-					<h1 className="c-green font-weight-bold">MedCare 2.0</h1>
-					<p className="c-grey">Santé et confort, qui dit mieux ?</p>
+				<div className='col-5 text-center'>
+					<img src={logo} width='200' alt='logo' className='mr-2' />
+					<h1 className='c-green font-weight-bold'>MedCare 2.0</h1>
+					<p className='c-grey'>Santé et confort, qui dit mieux ?</p>
 				</div>
 			</Row>
 
-			<Row flex={{ align: "center" }} className="p-4 mt-5">
-				<div className="col-5 text-center" id="PATIENT">
-					<i className="fas fa-user-injured icon-larger c-green"></i>
+			<Row flex={{ align: 'center' }} className='p-4 mt-5'>
+				<div className='col-5 text-center' id='PATIENT'>
+					<i className='fas fa-user-injured icon-larger c-green'></i>
 				</div>
 
-				<div className="col-7">
-					<h3 className="pt-4 c-green">POUR LE PATIENT</h3>
+				<div className='col-7'>
+					<h3 className='pt-4 c-green'>POUR LE PATIENT</h3>
 					<h5>Prise de rendez-vous en ligne</h5>
 					<ul>
 						<li>Recherche des médecins par nom, par spécialité, ou par localisation</li>
@@ -107,9 +107,9 @@ function About() {
 				</div>
 			</Row>
 
-			<Row flex={{ align: "center" }} className="p-4 mt-5">
-				<div className="col-7" id="DOCTOR">
-					<h3 className="pt-4 c-green">POUR LE MEDECIN</h3>
+			<Row flex={{ align: 'center' }} className='p-4 mt-5'>
+				<div className='col-7' id='DOCTOR'>
+					<h3 className='pt-4 c-green'>POUR LE MEDECIN</h3>
 					<h5>Gestion de l'agenda des rendez-vous</h5>
 					<ul>
 						<li>Diffusion de l'agenda des rendez-vous comportant vos disponibilités </li>
@@ -126,17 +126,17 @@ function About() {
 						<li>Paiement en ligne sécurisé</li>
 					</ul>
 				</div>
-				<div className="col-5 text-center">
-					<i className="fas fa-user-md icon-larger c-green"></i>
+				<div className='col-5 text-center'>
+					<i className='fas fa-user-md icon-larger c-green'></i>
 				</div>
 			</Row>
 
-			<Row flex={{ align: "center" }} className="p-4 mt-5">
-				<div className="col-5 text-center" id="PHARMACY">
-					<i className="fas fa-clinic-medical icon-larger c-green"></i>
+			<Row flex={{ align: 'center' }} className='p-4 mt-5'>
+				<div className='col-5 text-center' id='PHARMACY'>
+					<i className='fas fa-clinic-medical icon-larger c-green'></i>
 				</div>
-				<div className="col-7">
-					<h3 className="pt-4 c-green">POUR LE PHARMACIEN</h3>
+				<div className='col-7'>
+					<h3 className='pt-4 c-green'>POUR LE PHARMACIEN</h3>
 					<h5>Gestion des ventes et des stocks des produits de santé</h5>
 
 					<ul>
