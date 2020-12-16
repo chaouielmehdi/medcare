@@ -11,6 +11,10 @@ interface IInputProps {
 	width?: number;
 	placeholder?: string;
 	disabled?: boolean;
+	valid?: boolean;
+	defaultValue?: string | number;
+	value?: string | number;
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<IProps & IInputProps> = ({
@@ -21,9 +25,14 @@ const Input: FC<IProps & IInputProps> = ({
 	className,
 	width,
 	disabled,
+	valid,
+	defaultValue,
+	value,
+	onChange,
 }): ReactElement => {
 	const iconPosition = 'input-group-' + iconPos;
 	const iconClass = 'fas fa-' + icon;
+	const inputClass = className + ' form-control ' + (valid ? '' : 'is-invalid');
 
 	return (
 		<>
@@ -34,10 +43,13 @@ const Input: FC<IProps & IInputProps> = ({
 			)}
 			<input
 				type={type}
-				className={className + ' form-control'}
+				className={inputClass}
 				placeholder={placeholder}
 				style={{ width }}
 				disabled={disabled}
+				onChange={onChange}
+				defaultValue={defaultValue}
+				value={value}
 			/>
 			{iconPos === 'append' && (
 				<div className={iconPosition}>

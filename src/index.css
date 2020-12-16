@@ -56,3 +56,9 @@ body {
 .icon-larger {
 	font-size: 250px;
 }
+
+/* input bootstrap */
+.form-control {
+	background-image: none !important;
+	padding: 0.375rem 0.75rem !important;
+}

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useState } from 'react';
 import { Medicine } from '../../models/Medicine';
 import Row from '../Row/Row';
 
@@ -9,21 +9,22 @@ import Button from '../Button/Button';
 interface IMedicineCardProps {
 	className?: string;
 	medicine: Medicine;
+	showCartModal?: (event: React.MouseEvent) => void;
 }
 
-const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine }): ReactElement => {
-	const CenteredRow: FC<IProps> = ({ children }) => (
-		<Row isShadowed={false} flex={{ align: 'center', justify: 'center' }} className="mt-2">
-			{children}
-		</Row>
-	);
-
+const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine, showCartModal }): ReactElement => {
 	const getEnStock = () => {
 		if (medicine.quantity > 0) {
 			return <span className="c-green">En stock</span>;
 		}
 		return <span className="text-danger">Non disponible</span>;
 	};
+
+	const CenteredRow: FC<IProps> = ({ children }) => (
+		<Row isShadowed={false} flex={{ align: 'center', justify: 'center' }} className="mt-2">
+			{children}
+		</Row>
+	);
 
 	return (
 		<div className={className}>
@@ -53,25 +54,15 @@ const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine }): ReactEle
 							<span>{medicine.price} Dhs</span>
 						</Row>
 						<hr />
-						<Row
-							isShadowed={false}
-							flex={{ align: 'center', justify: 'between' }}
-							className="mt-2"
-						>
-							<div className="d-flex align-items-center">
-								Quantité :
-								<Input
-									disabled={medicine.quantity === 0}
-									type="number"
-									className="ml-2"
-									width={70}
-								/>
-							</div>
-							<div>
-								<Button disabled={medicine.quantity === 0} icon="shopping-cart" type="info">
-									Ajouter au panier
-								</Button>
-							</div>
+						<Row isShadowed={false} flex={{ align: 'start', justify: 'center' }} className="mt-2">
+							<Button
+								onClick={showCartModal}
+								disabled={medicine.quantity === 0}
+								icon="shopping-cart"
+								type="info"
+							>
+								Ajouter au panier
+							</Button>
 						</Row>
 					</div>
 				</div>
