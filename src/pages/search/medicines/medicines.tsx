@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Container from '../../../components/Container/Container';
 import MedicineCard from '../../../components/MedicineCard/MedicineCard';
-import AddToCart from '../../../components/modals/AddToCart';
+import AddToCartModal from '../../../components/modals/AddToCart';
 import Row from '../../../components/Row/Row';
 import { Medicine, medicines } from '../../../models/Medicine';
 
@@ -28,7 +28,7 @@ function Medicines() {
 					/>
 				))}
 			</Row>
-			<AddToCart medicine={medicineToModal} toggle={toggle} isOpen={modal} />
+			<AddToCartModal medicine={medicineToModal} toggle={toggle} isOpen={modal} />
 		</Container>
 	);
 }

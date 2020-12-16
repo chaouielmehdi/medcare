@@ -1,10 +1,9 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Medicine } from '../../models/Medicine';
-import Row from '../Row/Row';
-
+import { cartService } from '../../services/cartService';
 import { IProps } from '../../types/IProps';
-import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Row from '../Row/Row';
 
 interface IMedicineCardProps {
 	className?: string;
@@ -13,6 +12,15 @@ interface IMedicineCardProps {
 }
 
 const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine, showCartModal }): ReactElement => {
+	let isAddedToCart = false;
+	let quantityAddedToCart: number | undefined = 0;
+	const cartElement = cartService.getCartElement(medicine?.id);
+
+	if (cartElement) {
+		isAddedToCart = true;
+		quantityAddedToCart = cartElement?.quantity;
+	}
+
 	const getEnStock = () => {
 		if (medicine.quantity > 0) {
 			return <span className="c-green">En stock</span>;
@@ -54,16 +62,26 @@ const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine, showCartMod
 							<span>{medicine.price} Dhs</span>
 						</Row>
 						<hr />
-						<Row isShadowed={false} flex={{ align: 'start', justify: 'center' }} className="mt-2">
-							<Button
-								onClick={showCartModal}
-								disabled={medicine.quantity === 0}
-								icon="shopping-cart"
-								type="info"
-							>
-								Ajouter au panier
-							</Button>
-						</Row>
+						<div className="d-flex justify-content-center align-items-center w-100 mt-2">
+							{!isAddedToCart && (
+								<Button
+									onClick={showCartModal}
+									disabled={medicine.quantity === 0}
+									icon="shopping-cart"
+									type="info"
+								>
+									Ajouter au panier
+								</Button>
+							)}
+
+							{isAddedToCart && (
+								<div className="d-flex justify-content-center align-items-center w-100">
+									<Button type="link" className="c-green">
+										<>Ajouté (Quantité : {quantityAddedToCart})</>
+									</Button>
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>

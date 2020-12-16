@@ -1,5 +1,4 @@
 import React from 'react';
-import './header.css';
 import logo from '../../assets/img/logo.png';
 
 interface ILink {
@@ -11,8 +10,9 @@ function Header() {
 	const links: ILink[] = [
 		{ url: '', label: 'Acceuil' },
 		{ url: '', label: 'A propos' },
-		{ url: '', label: 'Espace Médcin' },
-		{ url: '', label: 'Espace Pharmacie' },
+		{ url: '', label: 'Médcins' },
+		{ url: '', label: 'Pharmacies' },
+		{ url: '', label: 'Médicaments' },
 		{ url: '', label: 'Connexion' },
 		{ url: '', label: 'FAQ' },
 		{ url: '', label: 'Contactez-nous' },

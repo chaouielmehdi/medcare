@@ -27,7 +27,7 @@ const Button: FC<IProps & IButtonProps> = ({
 	disabled,
 	onClick,
 }): ReactElement => {
-	const buttonClass = className + ' border btn btn-' + type;
+	const buttonClass = className + ' btn btn-' + type + (type === 'light' ? ' border' : '');
 	const iconClass = 'mr-2 fas fa-' + icon;
 
 	return (
