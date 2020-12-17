@@ -10,6 +10,9 @@ function Doctors() {
 	return (
 		<Container>
 			<>
+				<div className="head-text text-center">
+					<p>Trouvez votre médecin</p>
+				</div>
 				<div>
 					<Row isShadowed={false} flex={{ justify: 'center', align: 'center' }}>
 						<Button className="mx-2" icon="building" type="light">

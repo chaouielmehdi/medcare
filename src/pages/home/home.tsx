@@ -50,7 +50,7 @@ function Home() {
 				</div>
 
 				<div className=" col-5  text-center my-3">
-					<p>Trouvez votre médcin et prenez rendez-vous ! </p>
+					<p className="head-text">Trouvez votre médcin et prenez rendez-vous ! </p>
 					<div className="doctor1 rounded m-5">
 						<img src={Doctor1} alt="" />
 					</div>
@@ -59,7 +59,7 @@ function Home() {
 
 			<Row isShadowed={true} className="d-flex align-items-center p-4 mt-5">
 				<div className=" col-5  text-center my-3">
-					<p>Trouvez votre pharmacie et commandez vos produits de santé ! </p>
+					<p className="head-text">Trouvez votre pharmacie et commandez vos produits de santé ! </p>
 					<div className="doctor1 rounded m-5">
 						<img src={Pharmacien} alt="" />
 					</div>

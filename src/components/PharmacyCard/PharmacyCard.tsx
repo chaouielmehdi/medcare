@@ -4,6 +4,8 @@ import Row from '../Row/Row';
 
 import Rating from '../Rating/Rating';
 import Icon from '../Icon/Icon';
+import { Link } from 'react-router-dom';
+import { ROUTE } from '../../App';
 
 interface IPharmacyCardProps {
 	className?: string;
@@ -36,8 +38,8 @@ const PharmacyCard: FC<IPharmacyCardProps> = ({ className, pharmacy }): ReactEle
 	};
 
 	return (
-		<div className={className}>
-			<Row flex={{ align: 'center', justify: 'between' }} className="p-4">
+		<Link to={ROUTE.MEDICINES + '/' + pharmacy.id} className={className}>
+			<Row flex={{ align: 'center', justify: 'between' }} className="p-4 hover-shadow">
 				<div className="col-2 d-flex justify-content-center pl-0 pr-4">
 					<span className="c-green icon-medium">
 						<Icon className="mr-2" name="clinic-medical" />
@@ -80,7 +82,7 @@ const PharmacyCard: FC<IPharmacyCardProps> = ({ className, pharmacy }): ReactEle
 					</Row>
 				</div>
 			</Row>
-		</div>
+		</Link>
 	);
 };
 

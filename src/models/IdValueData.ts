@@ -200,6 +200,6 @@ export const cities: IdValueData[] = [
 	},
 	{
 		id: 3,
-		value: 'Fes',
+		value: 'Tétouan',
 	},
 ];
