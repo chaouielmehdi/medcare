@@ -34,7 +34,7 @@ const Input: FC<IProps & IInputProps> = ({
 }): ReactElement => {
 	const iconPosition = 'input-group-' + iconPos;
 	const iconClass = 'fas fa-' + icon;
-	const inputClass = className + ' form-control ' + (valid ? '' : 'is-invalid');
+	const inputClass = className + ' form-control ' + (valid === false ? 'is-invalid' : '');
 	const getIcon = () => (
 		<div className={iconPosition}>
 			<span className='input-group-text d-flex justify-content-center' style={{ width: '40px' }}>

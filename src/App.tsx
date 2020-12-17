@@ -10,6 +10,9 @@ import Contact from './pages/contact/contact';
 import Connexion from './pages/connexion/connexion';
 
 import { toast, ToastContainer } from 'react-toastify';
+import SignupPatient from './pages/signup/patient/signuppatient';
+import SignupPharmacien from './pages/signup/pharmacien/signuppharmacien';
+import SignupDoctor from './pages/signup/doctor/signupdoctor';
 
 const App = () => {
 	return (
@@ -22,7 +25,10 @@ const App = () => {
 				{/* <Pharmacies /> */}
 				{/* <Medicines /> */}
 				{/* <Contact /> */}
-				<Connexion />
+				{/* <Connexion /> */}
+				{/* <SignupDoctor /> */}
+				<SignupPatient />
+				{/* <SignupPharmacien /> */}
 				<ToastContainer />
 			</div>
 			<Footer />

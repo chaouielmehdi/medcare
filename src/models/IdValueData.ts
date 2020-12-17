@@ -203,3 +203,22 @@ export const cities: IdValueData[] = [
 		value: 'Fes',
 	},
 ];
+
+export const doctorSpecialties: IdValueData[] = [
+	{
+		id: 0,
+		value: "L'allergologie",
+	},
+	{
+		id: 1,
+		value: "L'andrologie",
+	},
+	{
+		id: 2,
+		value: "L'anesthésiologie",
+	},
+	{
+		id: 3,
+		value: 'La cardiologie',
+	},
+];
