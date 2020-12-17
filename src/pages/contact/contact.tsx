@@ -1,12 +1,10 @@
 import React from 'react';
-import Button, { ButtonType } from '../../components/Button/Button';
+import Address from '../../assets/img/Address.png';
+import Button from '../../components/Button/Button';
 import Container from '../../components/Container/Container';
 import Icon from '../../components/Icon/Icon';
 import Input from '../../components/Input/Input';
 import Row from '../../components/Row/Row';
-import { smoothScroll } from '../../services/smoothScroll';
-import Address from '../../assets/img/Address.png';
-
 import './contact.css';
 
 function Contact() {

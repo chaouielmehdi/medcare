@@ -5,16 +5,21 @@ type InputType = 'text' | 'checkbox' | 'radio' | 'number';
 type IconPosition = 'prepend' | 'append';
 
 interface IInputProps {
+	name?: string;
 	type?: InputType;
 	icon?: string;
 	iconPos?: IconPosition;
 	width?: number;
 	placeholder?: string;
 	disabled?: boolean;
-	name?: string;
+	valid?: boolean;
+	defaultValue?: string | number;
+	value?: string | number;
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<IProps & IInputProps> = ({
+	name,
 	placeholder,
 	icon,
 	iconPos,
@@ -22,11 +27,14 @@ const Input: FC<IProps & IInputProps> = ({
 	className,
 	width,
 	disabled,
-	name,
+	valid,
+	defaultValue,
+	value,
+	onChange,
 }): ReactElement => {
 	const iconPosition = 'input-group-' + iconPos;
 	const iconClass = 'fas fa-' + icon;
-	const inputClassName = className + (type !== 'radio' ? ' form-control' : '');
+	const inputClass = className + ' form-control ' + (valid ? '' : 'is-invalid');
 	const getIcon = () => (
 		<div className={iconPosition}>
 			<span className='input-group-text d-flex justify-content-center' style={{ width: '40px' }}>
@@ -39,12 +47,15 @@ const Input: FC<IProps & IInputProps> = ({
 		<>
 			{iconPos === 'prepend' && getIcon()}
 			<input
+				name={name}
 				type={type}
-				className={inputClassName}
+				className={inputClass}
 				placeholder={placeholder}
 				style={{ width }}
 				disabled={disabled}
-				name={name}
+				onChange={onChange}
+				defaultValue={defaultValue}
+				value={value}
 			/>
 			{iconPos === 'append' && getIcon()}
 		</>

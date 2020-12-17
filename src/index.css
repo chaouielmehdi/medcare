@@ -56,3 +56,14 @@ body {
 .icon-larger {
 	font-size: 250px;
 }
+
+/* input bootstrap */
+.form-control {
+	background-image: none !important;
+	padding: 0.375rem 0.75rem !important;
+}
+
+/* Toastify__toast */
+.Toastify__toast--success {
+	background: #329896f1 !important;
+}

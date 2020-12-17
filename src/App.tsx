@@ -9,6 +9,8 @@ import React from 'react';
 import Contact from './pages/contact/contact';
 import Connexion from './pages/connexion/connexion';
 
+import { toast, ToastContainer } from 'react-toastify';
+
 const App = () => {
 	return (
 		<>
@@ -21,6 +23,7 @@ const App = () => {
 				{/* <Medicines /> */}
 				{/* <Contact /> */}
 				<Connexion />
+				<ToastContainer />
 			</div>
 			<Footer />
 		</>

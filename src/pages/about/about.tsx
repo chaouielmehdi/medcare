@@ -2,7 +2,7 @@ import React from 'react';
 import Button, { ButtonType } from '../../components/Button/Button';
 import Container from '../../components/Container/Container';
 import Row from '../../components/Row/Row';
-import { smoothScroll } from '../../services/smoothScroll';
+import { smoothScroll } from '../../animations/smoothScroll';
 
 import logo from '../../assets/img/logo.png';
 

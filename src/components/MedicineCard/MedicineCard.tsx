@@ -1,22 +1,25 @@
 import React, { FC, ReactElement } from 'react';
 import { Medicine } from '../../models/Medicine';
-import Row from '../Row/Row';
-
+import { cartService } from '../../services/cartService';
 import { IProps } from '../../types/IProps';
-import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Row from '../Row/Row';
 
 interface IMedicineCardProps {
 	className?: string;
 	medicine: Medicine;
+	showCartModal?: (event: React.MouseEvent) => void;
 }
 
-const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine }): ReactElement => {
-	const CenteredRow: FC<IProps> = ({ children }) => (
-		<Row isShadowed={false} flex={{ align: 'center', justify: 'center' }} className="mt-2">
-			{children}
-		</Row>
-	);
+const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine, showCartModal }): ReactElement => {
+	let isAddedToCart = false;
+	let quantityAddedToCart: number | undefined = 0;
+	const cartElement = cartService.getCartElement(medicine?.id);
+
+	if (cartElement) {
+		isAddedToCart = true;
+		quantityAddedToCart = cartElement?.quantity;
+	}
 
 	const getEnStock = () => {
 		if (medicine.quantity > 0) {
@@ -24,6 +27,12 @@ const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine }): ReactEle
 		}
 		return <span className="text-danger">Non disponible</span>;
 	};
+
+	const CenteredRow: FC<IProps> = ({ children }) => (
+		<Row isShadowed={false} flex={{ align: 'center', justify: 'center' }} className="mt-2">
+			{children}
+		</Row>
+	);
 
 	return (
 		<div className={className}>
@@ -53,26 +62,26 @@ const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine }): ReactEle
 							<span>{medicine.price} Dhs</span>
 						</Row>
 						<hr />
-						<Row
-							isShadowed={false}
-							flex={{ align: 'center', justify: 'between' }}
-							className="mt-2"
-						>
-							<div className="d-flex align-items-center">
-								Quantité :
-								<Input
+						<div className="d-flex justify-content-center align-items-center w-100 mt-2">
+							{!isAddedToCart && (
+								<Button
+									onClick={showCartModal}
 									disabled={medicine.quantity === 0}
-									type="number"
-									className="ml-2"
-									width={70}
-								/>
-							</div>
-							<div>
-								<Button disabled={medicine.quantity === 0} icon="shopping-cart" type="info">
+									icon="shopping-cart"
+									type="info"
+								>
 									Ajouter au panier
 								</Button>
-							</div>
-						</Row>
+							)}
+
+							{isAddedToCart && (
+								<div className="d-flex justify-content-center align-items-center w-100">
+									<Button type="link" className="c-green">
+										<>Ajouté (Quantité : {quantityAddedToCart})</>
+									</Button>
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
