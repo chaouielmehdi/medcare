@@ -8,26 +8,45 @@ interface IInputProps {
 	type?: InputType;
 	icon?: string;
 	iconPos?: IconPosition;
-	defaultValue?: number;
+	width?: number;
+	placeholder?: string;
+	disabled?: boolean;
+	name?: string;
 }
 
-const Input: FC<IProps & IInputProps> = ({ icon, iconPos, type, defaultValue }): ReactElement => {
+const Input: FC<IProps & IInputProps> = ({
+	placeholder,
+	icon,
+	iconPos,
+	type,
+	className,
+	width,
+	disabled,
+	name,
+}): ReactElement => {
 	const iconPosition = 'input-group-' + iconPos;
 	const iconClass = 'fas fa-' + icon;
+	const inputClassName = className + (type !== 'radio' ? ' form-control' : '');
+	const getIcon = () => (
+		<div className={iconPosition}>
+			<span className='input-group-text d-flex justify-content-center' style={{ width: '40px' }}>
+				{icon && <i className={iconClass}></i>}
+			</span>
+		</div>
+	);
 
 	return (
 		<>
-			{iconPos === 'prepend' && (
-				<div className={iconPosition}>
-					<span className='input-group-text'>{icon && <i className={iconClass}></i>}</span>
-				</div>
-			)}
-			<input type={type} className='form-control' defaultValue={defaultValue} />
-			{iconPos === 'append' && (
-				<div className={iconPosition}>
-					<span className='input-group-text'>{icon && <i className={iconClass}></i>}</span>
-				</div>
-			)}
+			{iconPos === 'prepend' && getIcon()}
+			<input
+				type={type}
+				className={inputClassName}
+				placeholder={placeholder}
+				style={{ width }}
+				disabled={disabled}
+				name={name}
+			/>
+			{iconPos === 'append' && getIcon()}
 		</>
 	);
 };

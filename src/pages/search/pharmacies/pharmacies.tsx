@@ -13,13 +13,9 @@ function Pharmacies() {
 	const [filteredPharmacies, setPharmacies] = useState(pharmacies);
 	const filterCities = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const cityName = cities.find((city) => +event.target.value === city.id)?.value;
-		const pharmacyName = pharmacies.find((pharmacy) => +event.target.value === pharmacy.id)?.name;
-		console.log(event.target.value);
 		if (cityName) {
-			//if (cityName != "" || pharmacyName != "") {
-			const listPharmacies = pharmacies.filter(
-				(pharmacy) => pharmacy.address.toLowerCase().includes(cityName.toLowerCase())
-				//pharmacy.name.toLowerCase().includes(cityName.toLowerCase())
+			const listPharmacies = pharmacies.filter((pharmacy) =>
+				pharmacy.address.toLowerCase().includes(cityName.toLowerCase())
 			);
 			console.log(listPharmacies);
 			setPharmacies(listPharmacies);
@@ -40,11 +36,6 @@ function Pharmacies() {
 								placeholder='Entrer le nom de la pharmacie'
 								icon='clinic-medical'
 								iconPos='prepend'
-								//onChange={{filterCities]}
-								onChange={(filterCities: React.ChangeEvent<HTMLInputElement>) => {
-									const newValue = filterCities;
-								}}
-								//defaultValue={-1}
 							/>
 						</div>
 						<div className=' col-1'>
