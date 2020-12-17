@@ -21,11 +21,26 @@ body {
 
 /* colors */
 .c-green {
-	color: #329897;
+	color: #329897 !important;
 }
 
 .c-grey {
-	color: #869494;
+	color: #869494 !important;
+}
+
+/* links */
+a {
+	color: #869494 !important;
+	text-decoration: none !important;
+}
+
+.link {
+	color: #869494 !important;
+}
+
+.active-link {
+	font-weight: bold;
+	color: #329897 !important;
 }
 
 /* button */
@@ -38,6 +53,11 @@ body {
 /* shadows */
 .box-shadow {
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hover-shadow:hover {
+	box-shadow: 0 5px 17px rgba(0, 0, 0, 0.123);
+	transition: 0.5s;
 }
 
 /* borders */

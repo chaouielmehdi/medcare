@@ -1,10 +1,6 @@
 import { toast } from 'react-toastify';
-
-interface Cart {
-	id?: number;
-	medicineId?: number;
-	quantity?: number;
-}
+import { Cart } from '../models/Cart';
+import { storageService, Store } from './storageService';
 
 export const cartService = {
 	addToCart: (cartElement: Cart): void => {
@@ -16,13 +12,13 @@ export const cartService = {
 
 		cart.push(cartElement);
 
-		store(cart);
+		storageService.store(Store.CART, cart);
 
 		toast.success("L'article a été ajouté à votre panier");
 	},
 
 	getCart: (): Cart[] => {
-		const cartAsString = get();
+		const cartAsString = storageService.get(Store.CART);
 
 		if (cartAsString) {
 			return JSON.parse(cartAsString);
@@ -42,23 +38,9 @@ export const cartService = {
 
 		cart = remove(cart, medicineId);
 
-		store(cart);
+		storageService.store(Store.CART, cart);
 	},
 };
-
-/**
- * -----------
- * LocalStorage
- * -----------
- */
-
-const CART = 'cart';
-
-const store = (cart: Cart[]) => {
-	localStorage.setItem(CART, JSON.stringify(cart));
-};
-
-const get = () => localStorage.getItem(CART);
 
 /**
  * -----------
