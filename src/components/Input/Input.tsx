@@ -32,7 +32,7 @@ const Input: FC<IProps & IInputProps> = ({
 }): ReactElement => {
 	const iconPosition = 'input-group-' + iconPos;
 	const iconClass = 'fas fa-' + icon;
-	const inputClass = className + ' form-control ' + (valid ? '' : 'is-invalid');
+	const inputClass = className + ' form-control ' + (valid === false ? 'is-invalid' : '');
 
 	return (
 		<>
