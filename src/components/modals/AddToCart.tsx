@@ -39,7 +39,7 @@ const AddToCartModal: FC<IAddToCardProps> = ({ className, isOpen, medicine, togg
 	};
 
 	const handleAddToCart = () => {
-		cartService.addToCart({ medicineId: medicine?.id, quantity });
+		cartService.addElement({ medicineId: medicine?.id, quantity });
 		toggle();
 	};
 
