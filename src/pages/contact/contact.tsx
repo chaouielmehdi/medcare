@@ -10,7 +10,7 @@ import './contact.css';
 function Contact() {
 	return (
 		<Container>
-			<Row flex={{ align: 'center' }} className='section-block d-flex flex-column p-4'>
+			<Row flex={{ align: 'center' }} className=' d-flex flex-column p-4'>
 				<div>
 					<div className='head-text text-center my-3'>
 						<p>Vous avez une question à nous poser ? </p>
@@ -80,7 +80,7 @@ function Contact() {
 					</div>
 				</div>
 			</Row>
-			<Row flex={{ align: 'center' }} className='section-block d-flex flex-column mt-4 p-4'>
+			<Row flex={{ align: 'center' }} className=' d-flex flex-column mt-4 p-4'>
 				<div className='d-flex justify-content-around container-fluid my-1'>
 					<div className='col-4'>
 						<div className='d-flex align-items-center mt-5'>

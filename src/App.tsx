@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import About from './pages/about/about';
+import Contact from './pages/contact/contact';
 import Footer from './pages/footer/footer';
 import Header from './pages/header/header';
 import Home from './pages/home/home';
@@ -41,6 +42,7 @@ const App = () => {
 					<Route path={ROUTE.DOCTORS} children={<Doctors />} />
 					<Route path={ROUTE.PHARMACIES} children={<Pharmacies />} />
 					<Route path={ROUTE.MEDICINES + '/:pharmacyId?'} children={<Medicines />} />
+					<Route path={ROUTE.CONTACT_US} children={<Contact />} />
 					<Route path={ROUTE.SIGNUPDOCTOR} children={<SignupDoctor />} />
 					<Route path={ROUTE.SIGNUPPATIENT} children={<SignupPatient />} />
 					<Route path={ROUTE.SIGNUPPHARMACIEN} children={<SignupPharmacien />} />
