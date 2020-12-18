@@ -55,9 +55,7 @@ function Medicines() {
 	return (
 		<Container>
 			<Row flex={{ justify: 'center' }} isShadowed={false}>
-				<p className="head-text">
-					Trouvez un médicament {defaultInputValue && 'chez : ' + defaultInputValue}
-				</p>
+				<p className="head-text">Trouvez un médicament {inputValue && 'chez : ' + inputValue}</p>
 			</Row>
 			<Row flex={{ justify: 'center' }} isShadowed={false}>
 				<div className="input-group col-4">
