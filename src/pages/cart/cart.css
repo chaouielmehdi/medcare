@@ -1,0 +1,30 @@
+.head-title {
+	font: bold;
+	font-size: 20px;
+	background-color: rgb(65, 152, 152);
+	color: rgb(255, 255, 255);
+}
+.head-section {
+	text-align: center;
+	font: bold;
+	font-size: 24px;
+	color: rgb(65, 152, 152);
+}
+.border-case {
+	border-style: solid;
+	border-color: rgb(65, 152, 152);
+}
+.block-style {
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	background-color: rgb(238, 238, 238);
+}
+input[type='file'] {
+	display: none;
+}
+.custom-file-upload {
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+}

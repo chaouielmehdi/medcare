@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { IProps } from '../../types/IProps';
 
-type InputType = 'text' | 'checkbox' | 'radio' | 'number' | 'password';
+type InputType = 'text' | 'checkbox' | 'radio' | 'number' | 'password' | 'file';
 type IconPosition = 'prepend' | 'append';
 
 interface IInputProps {
@@ -10,6 +10,7 @@ interface IInputProps {
 	icon?: string;
 	iconPos?: IconPosition;
 	width?: number;
+	height?: number;
 	placeholder?: string;
 	disabled?: boolean;
 	valid?: boolean;
@@ -26,6 +27,7 @@ const Input: FC<IProps & IInputProps> = ({
 	type,
 	className,
 	width,
+	height,
 	disabled,
 	valid,
 	defaultValue,
@@ -51,7 +53,7 @@ const Input: FC<IProps & IInputProps> = ({
 				type={type}
 				className={inputClass}
 				placeholder={placeholder}
-				style={{ width }}
+				style={{ width, height }}
 				disabled={disabled}
 				onChange={onChange}
 				defaultValue={defaultValue}
