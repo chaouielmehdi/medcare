@@ -1,24 +1,20 @@
-import React from 'react';
-import Container from '../../components/Container/Container';
-import Row from '../../components/Row/Row';
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import Button from '../../components/Button/Button';
+import Container from '../../components/Container/Container';
 import Input from '../../components/Input/Input';
-import './connexion.css';
-import { useState } from 'react';
+import Row from '../../components/Row/Row';
 import { patients } from '../../models/Patient';
 import { patientService } from '../../services/patientService';
-import { toast } from 'react-toastify';
-import { Redirect } from 'react-router-dom';
+import './connexion.css';
 
 function Connexion() {
 	function handleSubmit() {
-		console.log('button clicked');
-		//verify if oject exist in
 		const patient = patients.find(
 			(patient) => patient.email === inputs.email.value && patient.password === inputs.password.value
 		);
 		if (!patient) {
-			toast.error('invalide e-mail et password');
+			toast.error('Invalide email ou mot de passe');
 		} else {
 			patientService.login(patient);
 			toast.success('Bienvenue');
