@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
@@ -15,6 +15,7 @@ import Pharmacies from './pages/search/pharmacies/pharmacies';
 import SignupDoctor from './pages/signup/doctor/signupdoctor';
 import SignupPatient from './pages/signup/patient/signuppatient';
 import SignupPharmacien from './pages/signup/pharmacien/signuppharmacien';
+import { patientService } from './services/patientService';
 
 export enum ROUTE {
 	HOME = '/home',
@@ -22,16 +23,17 @@ export enum ROUTE {
 	DOCTORS = '/doctors',
 	PHARMACIES = '/pharmacies',
 	MEDICINES = '/medicines',
-	LOGIN = '/login',
 	FAQ = '/FAQ',
 	CONTACT_US = '/contact-us',
-	SIGNUPDOCTOR = '/sign-up-doctor',
-	SIGNUPPATIENT = '/sign-up-patient',
-	SIGNUPPHARMACIEN = '/sign-up-pharmacien',
+	SIGN_UP_DOCTOR = '/sign-up-doctor',
+	SIGN_UP_PATIENT = '/sign-up-patient',
+	SIGN_UP_PHARMACIEN = '/sign-up-pharmacien',
+	LOGIN = '/login',
+	MESSAGERIE = '/messagerie',
 }
 
 const App = () => {
-	// const [isConnected, setIsConnected] = useState(true);
+	const [isConnected, setIsConnected] = useState(patientService.isConnected());
 
 	return (
 		<Router>
@@ -52,9 +54,9 @@ const App = () => {
 					<Route path={ROUTE.FAQ} children={<FAQ />} />
 					<Route path={ROUTE.CONTACT_US} children={<Contact />} />
 
-					<Route path={ROUTE.SIGNUPDOCTOR} children={<SignupDoctor />} />
-					<Route path={ROUTE.SIGNUPPATIENT} children={<SignupPatient />} />
-					<Route path={ROUTE.SIGNUPPHARMACIEN} children={<SignupPharmacien />} />
+					<Route path={ROUTE.SIGN_UP_DOCTOR} children={<SignupDoctor />} />
+					<Route path={ROUTE.SIGN_UP_PATIENT} children={<SignupPatient />} />
+					<Route path={ROUTE.SIGN_UP_PHARMACIEN} children={<SignupPharmacien />} />
 
 					<Route path="*">
 						<Redirect to={ROUTE.HOME} />

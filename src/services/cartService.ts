@@ -1,10 +1,10 @@
 import { toast } from 'react-toastify';
 import { Cart } from '../models/Cart';
-import { storageService, Store } from './storageService';
+import { storageService } from './storageService';
 
 export const cartService = {
 	addElement: (cartElement: Cart): void => {
-		let cart = cartService.getAll();
+		let cart = cartService.getAll() || [];
 
 		if (find(cart, cartElement.medicineId)) {
 			cart = remove(cart, cartElement.medicineId);
@@ -43,6 +43,10 @@ export const cartService = {
  */
 
 const find = (cart: Cart[], medicineId: number | undefined) => {
+	if (!cart) {
+		return;
+	}
+
 	return cart.find((element) => element.medicineId === medicineId);
 };
 

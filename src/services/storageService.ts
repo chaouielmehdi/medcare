@@ -12,11 +12,19 @@ export enum Store {
 
 export const storageService = {
 	store: (store: Store, value: any): void => localStorage.setItem(store, JSON.stringify(value)),
-	get: (store: Store): any => JSON.parse(localStorage.getItem(store) || '[]'),
+	get: (store: Store): any => {
+		const item = localStorage.getItem(store);
+
+		if (item) {
+			return JSON.parse(item);
+		}
+
+		return null;
+	},
 
 	cart: {
-		store: (value: Cart[]) => storageService.store(Store.Cart, value),
-		get: () => storageService.get(Store.Cart),
+		store: (value: Cart[]): void => storageService.store(Store.Cart, value),
+		get: (): Cart[] => storageService.get(Store.Cart) as Cart[],
 	},
 
 	patient: {
