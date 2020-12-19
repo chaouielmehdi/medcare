@@ -1,18 +1,41 @@
 import React from 'react';
 import Button from '../../components/Button/Button';
 import Container from '../../components/Container/Container';
+import Icon from '../../components/Icon/Icon';
 import Input from '../../components/Input/Input';
 import Row from '../../components/Row/Row';
+import { medicines } from '../../models/Medicine';
+import { cartService } from '../../services/cartService';
+import { patientService } from '../../services/patientService';
 import './cart.css';
 
 function Cart() {
+	const cart = cartService.getAll();
+	const medsCart = cart.map((element) => {
+		const foundMed = medicines.find((medicine) => element.medicineId === medicine.id);
+		return foundMed;
+	});
+	const patient = patientService.getConnected();
+	let total = 0;
+	medsCart.forEach((element, index) => {
+		if (element && cart) {
+			total += element?.price * cart[index].quantity!;
+		}
+	});
+	const deleteItem = (medicineId: number | undefined) => {
+		return () => {
+			if (medicineId) {
+				cartService.deleteElement(medicineId);
+			}
+		};
+	};
 	return (
 		<Container>
 			<Row flex={{ align: 'center' }} className=" d-flex flex-column p-4">
 				<div className="border container-fluid px-5">
 					<div className="border head-text text-center my-3">
 						<p>BIENVENUE DANS VOTRE ESPACE !</p>
-						<p>Flan ben fertelan</p>
+						<p>{patient.name}</p>
 					</div>
 					<div className="border border-case head-title text-center py-2">
 						<p className="m-0">MON PANIER</p>
@@ -20,15 +43,43 @@ function Cart() {
 
 					<div className="border d-flex justify-content-around my-3">
 						<div className="border col-8 d-flex flex-column my-3">
-							<div className="border block-style my-3">side 1</div>
+							<div className="border block-style my-3">
+								<div>
+									<div>
+										{medsCart.map((medicine, index) => (
+											<div className="border d-flex justify-content-between m-1 p-1">
+												<div className="border col-3 d-flex">
+													<img src={medicine?.imageUrl} width="150" />
+												</div>
+
+												<div className="border col-8 d-flex flex-column">
+													<div className="border">
+														<p>{medicine?.name}</p>
+													</div>
+													<div className="border">
+														<p>{medicine?.description}</p>
+													</div>
+													<div className="border d-flex justify-content-around mt-auto">
+														<p>Qté : {cart[index].quantity}</p>
+														<p>Prix unitaire : {medicine?.price} Dhs</p>
+													</div>
+												</div>
+												<div className="border col-1 d-flex align-items-start justify-content-end">
+													<Button type="info" onClick={deleteItem(medicine?.id)}>
+														<Icon name="trash-alt" />
+													</Button>
+												</div>
+											</div>
+										))}
+									</div>
+								</div>
+							</div>
 							<div className="border d-flex flex-column p-2 my-3">
 								<p>
 									Envoyer la photo de votre ordonnance qui vient de vous être prescrite :{' '}
 								</p>
 								<form>
 									<div className="custom-file">
-										{/* <label>Example file input</label>
-										<Input type="file" className="form-control-file" /> */}
 										<input type="file" className="custom-file-input" />
 										<label className="custom-file-label">
 											<i className="fa fa-upload mx-2"></i>
@@ -106,14 +157,14 @@ function Cart() {
 											<p>Livraison : </p>
 										</div>
 										<div className="border d-flex flex-column">
-											<p>121 dhs</p>
-											<p>25 dhs</p>
+											<p>{total} Dhs</p>
+											<p>25 Dhs</p>
 										</div>
 									</div>
 									<hr style={{ width: '280px', border: '1px solid #ccc' }} />
 									<div className="border d-flex justify-content-around">
 										<p>Total : </p>
-										<p>146 dhs</p>
+										<p>{total + 25} Dhs</p>
 									</div>
 									<div className="border d-flex align-items-start ml-4 mt-2">
 										<input type="checkbox" className="form-check-input" />
