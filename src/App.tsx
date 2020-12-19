@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
@@ -17,6 +17,7 @@ import Pharmacies from './pages/search/pharmacies/pharmacies';
 import SignupDoctor from './pages/signup/doctor/signupdoctor';
 import SignupPatient from './pages/signup/patient/signuppatient';
 import SignupPharmacien from './pages/signup/pharmacien/signuppharmacien';
+import { cartService } from './services/cartService';
 import { patientService } from './services/patientService';
 
 export enum ROUTE {
@@ -37,10 +38,15 @@ export enum ROUTE {
 
 const App = () => {
 	const isConnected = patientService.isConnected();
+	const [cartCount, setCartCount] = useState(cartService.getAll() ? cartService.getAll().length : 0);
+
+	const handleSetCartCount = (): void => {
+		setCartCount(cartService.getAll() ? cartService.getAll().length : 0);
+	};
 
 	return (
 		<Router>
-			<Header />
+			<Header cartCount={cartCount} />
 			<div className="main py-5">
 				<Switch>
 					<Route exact path="/">
@@ -51,7 +57,10 @@ const App = () => {
 					<Route path={ROUTE.ABOUT} children={<About />} />
 					<Route path={ROUTE.DOCTORS} children={<Doctors />} />
 					<Route path={ROUTE.PHARMACIES} children={<Pharmacies />} />
-					<Route path={ROUTE.MEDICINES + '/:pharmacyId?'} children={<Medicines />} />
+					<Route
+						path={ROUTE.MEDICINES + '/:pharmacyId?'}
+						children={<Medicines setCartCount={handleSetCartCount} />}
+					/>
 					<ProtectedRoute
 						condition={isConnected}
 						path={ROUTE.MESSAGERIE}
@@ -62,7 +71,6 @@ const App = () => {
 					<Route path={ROUTE.CONTACT_US} children={<Contact />} />
 					<Route path={ROUTE.SIGN_UP_DOCTOR} children={<SignupDoctor />} />
 					<Route path={ROUTE.SIGN_UP_PATIENT} children={<SignupPatient />} />
-					<Route path={ROUTE.SIGN_UP_PHARMACIEN} children={<SignupPharmacien />} />
 					<Route path={ROUTE.SIGN_UP_PHARMACIEN} children={<SignupPharmacien />} />
 					<Route path={ROUTE.CART} children={<Cart />} />
 

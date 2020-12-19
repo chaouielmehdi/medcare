@@ -8,6 +8,10 @@ export const patientService = {
 		return storageService.patient.getConnected();
 	},
 
+	logout: (): void => {
+		storageService.patient.removeConnected();
+	},
+
 	getConnected: (): Patient => {
 		return storageService.patient.getConnected();
 	},

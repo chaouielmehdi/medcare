@@ -1,4 +1,6 @@
 import React, { FC, ReactElement } from 'react';
+import { useHistory } from 'react-router-dom';
+import { ROUTE } from '../../App';
 import { Medicine } from '../../models/Medicine';
 import { cartService } from '../../services/cartService';
 import { IProps } from '../../types/IProps';
@@ -12,6 +14,12 @@ interface IMedicineCardProps {
 }
 
 const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine, showCartModal }): ReactElement => {
+	const history = useHistory();
+
+	const navigateToCart = () => {
+		history.push(ROUTE.CART);
+	};
+
 	let isAddedToCart = false;
 	let quantityAddedToCart: number | undefined = 0;
 	const cartElement = cartService.getElement(medicine?.id);
@@ -76,7 +84,7 @@ const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine, showCartMod
 
 							{isAddedToCart && (
 								<div className="d-flex justify-content-center align-items-center w-100">
-									<Button type="link" className="c-green">
+									<Button onClick={navigateToCart} type="link" className="c-green">
 										<>Ajouté (Quantité : {quantityAddedToCart})</>
 									</Button>
 								</div>

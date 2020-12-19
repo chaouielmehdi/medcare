@@ -6,6 +6,7 @@ export type ButtonType =
 	| 'secondary'
 	| 'success'
 	| 'danger'
+	| 'outline-danger'
 	| 'warning'
 	| 'info'
 	| 'light'

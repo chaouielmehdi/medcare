@@ -21,6 +21,9 @@ export const storageService = {
 
 		return null;
 	},
+	remove: (store: Store): void => {
+		localStorage.removeItem(store);
+	},
 
 	cart: {
 		store: (value: Cart[]): void => storageService.store(Store.Cart, value),
@@ -30,6 +33,7 @@ export const storageService = {
 	patient: {
 		storeConnected: (value: Patient): void => storageService.store(Store.Patient, value),
 		getConnected: (): Patient => storageService.get(Store.Patient) as Patient,
+		removeConnected: (): void => storageService.remove(Store.Patient),
 	},
 
 	doctor: {

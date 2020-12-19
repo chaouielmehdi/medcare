@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { ROUTE } from '../../App';
 import Button from '../../components/Button/Button';
 import Container from '../../components/Container/Container';
 import Input from '../../components/Input/Input';
@@ -9,6 +11,12 @@ import { patientService } from '../../services/patientService';
 import './connexion.css';
 
 function Connexion() {
+	const history = useHistory();
+
+	const navigateToSignUpPatient = () => {
+		history.push(ROUTE.SIGN_UP_PATIENT);
+	};
+
 	function handleSubmit() {
 		const patient = patients.find(
 			(patient) => patient.email === inputs.email.value && patient.password === inputs.password.value
@@ -17,7 +25,6 @@ function Connexion() {
 			toast.error('Invalide email ou mot de passe');
 		} else {
 			patientService.login(patient);
-			toast.success('Bienvenue');
 			window.location.href = '/messagerie';
 		}
 	}
@@ -43,7 +50,7 @@ function Connexion() {
 			if (value === '') {
 				newInputs.password = {
 					value,
-					message: 'Le mot de pass ne peut pas etre vide!',
+					message: 'Le mot de passe ne peut pas etre vide!',
 					isError: true,
 				};
 			} else {
@@ -77,7 +84,7 @@ function Connexion() {
 							</div>
 							<div className="input-group" style={{ width: '550px' }}>
 								<Input
-									placeholder="Mot de pass ..."
+									placeholder="Mot de passe ..."
 									icon="key"
 									iconPos="prepend"
 									onChange={check.password}
@@ -89,7 +96,7 @@ function Connexion() {
 								</div>
 							</div>
 							<div className="d-flex align-items-end mt-2 mb-4" style={{ fontSize: '12px' }}>
-								<a href="#">Mot de pass oublié?</a>
+								<a href=" ">Mot de passe oublié?</a>
 							</div>
 							<div className="d-flex justify-content-center mb-3">
 								<Button
@@ -97,14 +104,13 @@ function Connexion() {
 									type="light"
 									onClick={handleSubmit}
 									disabled={inputs.password.isError || inputs.email.isError}
-									//disabled={''}
 								>
 									Se connecter
 								</Button>
 							</div>
 							<p>Vous n'avez pas encore un compte? Inscrivez-vous !</p>
 							<div className="d-flex justify-content-center">
-								<Button className="button-style" type="light">
+								<Button onClick={navigateToSignUpPatient} type="light">
 									S'inscrire
 								</Button>
 							</div>

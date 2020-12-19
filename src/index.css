@@ -28,6 +28,11 @@ body {
 	color: #869494 !important;
 }
 
+/* badge */
+.badge-info {
+	background-color: #329897 !important;
+}
+
 /* links */
 a {
 	color: #869494 !important;
@@ -41,6 +46,11 @@ a {
 .active-link {
 	font-weight: bold;
 	color: #329897 !important;
+}
+
+.active-link button {
+	color: white !important;
+	background-color: #329897 !important;
 }
 
 /* button */

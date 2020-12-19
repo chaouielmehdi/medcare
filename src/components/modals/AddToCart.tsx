@@ -13,9 +13,10 @@ interface IAddToCardProps {
 	isOpen?: boolean;
 	medicine?: Medicine;
 	toggle: (event?: React.MouseEvent) => void;
+	setCartCount: () => void;
 }
 
-const AddToCartModal: FC<IAddToCardProps> = ({ className, isOpen, medicine, toggle }) => {
+const AddToCartModal: FC<IAddToCardProps> = ({ className, isOpen, medicine, toggle, setCartCount }) => {
 	const [quantity, setQuantity] = useState<number>(1);
 
 	const handleQuantityChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,6 +42,7 @@ const AddToCartModal: FC<IAddToCardProps> = ({ className, isOpen, medicine, togg
 	const handleAddToCart = () => {
 		cartService.addElement({ medicineId: medicine?.id, quantity });
 		toggle();
+		setCartCount();
 	};
 
 	const CenteredRow: FC<IProps> = ({ children }) => (
