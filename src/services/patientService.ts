@@ -17,8 +17,6 @@ export const patientService = {
 	},
 
 	isConnected: (): boolean => {
-		console.log(storageService.patient.getConnected());
-
 		if (storageService.patient.getConnected()) {
 			return true;
 		}
