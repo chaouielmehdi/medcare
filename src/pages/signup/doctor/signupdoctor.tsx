@@ -9,14 +9,14 @@ import { doctorSpecialties } from '../../../models/IdValueData';
 function SignupDoctor() {
 	return (
 		<Container>
-			<Row isShadowed={false} className='section-block d-flex flex-column align-items-center'>
+			<Row isShadowed={false} className=' d-flex flex-column align-items-center'>
 				<div className='border-case' style={{ width: '650px' }}>
 					<div className='border-case head-title text-center'>
 						<p className='head-title '>INSCRIPTION</p>
 					</div>
 
 					<div className=' d-flex flex-column '>
-						<div className='box-border d-flex flex-column align-items-center text-center rounded-lg mb-5'>
+						<div className='d-flex flex-column align-items-center text-center rounded-lg mb-5'>
 							<p className='mt-2 pt-2'>Bienvenue à MedCare 2.0 !</p>
 							<p>Merci de remplir les champs suivants pour crée votre propre compte.</p>
 							<div className='d-flex flex-column align-items-center mt-5'>

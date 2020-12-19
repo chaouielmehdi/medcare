@@ -49,6 +49,7 @@ const App = () => {
 					<Route path={ROUTE.DOCTORS} children={<Doctors />} />
 					<Route path={ROUTE.PHARMACIES} children={<Pharmacies />} />
 					<Route path={ROUTE.MEDICINES + '/:pharmacyId?'} children={<Medicines />} />
+					<Route path={ROUTE.CONTACT_US} children={<Contact />} />
 
 					<Route path={ROUTE.LOGIN} children={<Connexion />} />
 					<Route path={ROUTE.FAQ} children={<FAQ />} />
