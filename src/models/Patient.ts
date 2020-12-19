@@ -23,4 +23,11 @@ export const patients: Patient[] = [
 		password: '123456',
 		phone: '+212 6 50 34 23 69',
 	},
+	{
+		id: 2,
+		name: 'Lady GAGA',
+		email: 'g',
+		password: 'g',
+		phone: '+212 6 50 34 23 69',
+	},
 ];

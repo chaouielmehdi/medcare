@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { patients } from '../../models/Patient';
 import { patientService } from '../../services/patientService';
 import { toast } from 'react-toastify';
+import { Redirect } from 'react-router-dom';
 
 function Connexion() {
 	function handleSubmit() {
@@ -20,6 +21,8 @@ function Connexion() {
 			toast.error('invalide e-mail et password');
 		} else {
 			patientService.login(patient);
+			toast.success('Bienvenue');
+			window.location.href = '/messagerie';
 		}
 	}
 
