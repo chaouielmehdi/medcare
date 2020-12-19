@@ -9,7 +9,7 @@ import Row from '../../../components/Row/Row';
 import { Medicine, medicines } from '../../../models/Medicine';
 import { pharmacies } from '../../../models/Pharmacy';
 
-function Medicines() {
+function Medicines(props: { setCartCount: () => void }) {
 	const { pharmacyId } = useParams<{ pharmacyId: string }>();
 	const pharmacy = pharmacies.find((pharmacy) => pharmacy.id === +pharmacyId);
 	const defaultInputValue = pharmacy?.name || '';
@@ -83,7 +83,12 @@ function Medicines() {
 					))}
 				</>
 			</Row>
-			<AddToCartModal medicine={medicineToModal} toggle={toggle} isOpen={modal} />
+			<AddToCartModal
+				setCartCount={props.setCartCount}
+				medicine={medicineToModal}
+				toggle={toggle}
+				isOpen={modal}
+			/>
 		</Container>
 	);
 }

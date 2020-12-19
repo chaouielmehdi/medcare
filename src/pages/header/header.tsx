@@ -11,10 +11,16 @@ interface ILink {
 	show: boolean;
 	isButton?: boolean;
 	icon?: string;
+	hasBadge?: boolean;
 }
 
-function Header() {
+function Header(props: { cartCount: number }) {
 	const isConnected = patientService.isConnected();
+
+	const handleLogout = () => {
+		patientService.logout();
+		window.location.href = '/home';
+	};
 
 	const links: ILink[] = [
 		{
@@ -23,7 +29,7 @@ function Header() {
 			label: 'Acceuil',
 		},
 		{
-			show: true,
+			show: !isConnected,
 			path: ROUTE.ABOUT,
 			label: 'A propos',
 		},
@@ -43,12 +49,12 @@ function Header() {
 			label: 'Médicaments',
 		},
 		{
-			show: true,
+			show: !isConnected,
 			path: ROUTE.FAQ,
 			label: 'FAQ',
 		},
 		{
-			show: true,
+			show: !isConnected,
 			path: ROUTE.CONTACT_US,
 			label: 'Contactez-nous',
 		},
@@ -58,6 +64,14 @@ function Header() {
 			path: ROUTE.LOGIN,
 			icon: 'sign-in-alt',
 			label: 'Connexion',
+		},
+		{
+			show: isConnected,
+			isButton: true,
+			icon: 'shopping-cart',
+			path: ROUTE.CART,
+			label: 'Panier',
+			hasBadge: true,
 		},
 		{
 			show: isConnected,
@@ -87,10 +101,24 @@ function Header() {
 									className="link mx-2"
 									activeClassName="active-link"
 								>
-									{link.isButton && <Button icon={link.icon}>{link.label}</Button>}
+									{link.isButton && (
+										<Button icon={link.icon}>
+											<>
+												{link.label}
+												{link.hasBadge && (
+													<span className="ml-1">({props.cartCount})</span>
+												)}
+											</>
+										</Button>
+									)}
 									{!link.isButton && link.label}
 								</NavLink>
 							)
+					)}
+					{isConnected && (
+						<Button onClick={handleLogout} type="outline-danger" icon="power-off">
+							Logout
+						</Button>
 					)}
 				</div>
 			</div>
