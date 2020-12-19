@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 import About from './pages/about/about';
+import Connexion from './pages/connexion/connexion';
 import Contact from './pages/contact/contact';
+import FAQ from './pages/FAQ/FAQ';
 import Footer from './pages/footer/footer';
 import Header from './pages/header/header';
 import Home from './pages/home/home';
@@ -28,12 +31,14 @@ export enum ROUTE {
 }
 
 const App = () => {
+	// const [isConnected, setIsConnected] = useState(true);
+
 	return (
 		<Router>
 			<Header />
-			<div className='main py-5'>
+			<div className="main py-5">
 				<Switch>
-					<Route exact path='/'>
+					<Route exact path="/">
 						<Redirect to={ROUTE.HOME} />
 					</Route>
 
@@ -43,11 +48,16 @@ const App = () => {
 					<Route path={ROUTE.PHARMACIES} children={<Pharmacies />} />
 					<Route path={ROUTE.MEDICINES + '/:pharmacyId?'} children={<Medicines />} />
 					<Route path={ROUTE.CONTACT_US} children={<Contact />} />
+
+					<Route path={ROUTE.LOGIN} children={<Connexion />} />
+					<Route path={ROUTE.FAQ} children={<FAQ />} />
+					<Route path={ROUTE.CONTACT_US} children={<Contact />} />
+
 					<Route path={ROUTE.SIGNUPDOCTOR} children={<SignupDoctor />} />
 					<Route path={ROUTE.SIGNUPPATIENT} children={<SignupPatient />} />
 					<Route path={ROUTE.SIGNUPPHARMACIEN} children={<SignupPharmacien />} />
 
-					<Route path='*'>
+					<Route path="*">
 						<Redirect to={ROUTE.HOME} />
 					</Route>
 				</Switch>

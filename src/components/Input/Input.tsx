@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { IProps } from '../../types/IProps';
 
-type InputType = 'text' | 'checkbox' | 'radio' | 'number';
+type InputType = 'text' | 'checkbox' | 'radio' | 'number' | 'password';
 type IconPosition = 'prepend' | 'append';
 
 interface IInputProps {
@@ -37,7 +37,7 @@ const Input: FC<IProps & IInputProps> = ({
 	const inputClass = className + ' form-control ' + (valid === false ? 'is-invalid' : '');
 	const getIcon = () => (
 		<div className={iconPosition}>
-			<span className='input-group-text d-flex justify-content-center' style={{ width: '40px' }}>
+			<span className="input-group-text d-flex justify-content-center" style={{ width: '40px' }}>
 				{icon && <i className={iconClass}></i>}
 			</span>
 		</div>

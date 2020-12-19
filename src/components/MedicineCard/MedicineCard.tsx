@@ -14,7 +14,7 @@ interface IMedicineCardProps {
 const MedicineCard: FC<IMedicineCardProps> = ({ className, medicine, showCartModal }): ReactElement => {
 	let isAddedToCart = false;
 	let quantityAddedToCart: number | undefined = 0;
-	const cartElement = cartService.getCartElement(medicine?.id);
+	const cartElement = cartService.getElement(medicine?.id);
 
 	if (cartElement) {
 		isAddedToCart = true;
