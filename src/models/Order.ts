@@ -5,4 +5,5 @@ export interface Order {
 	owner?: number;
 	content?: Cart[];
 	total?: number;
+	date?: string;
 }
