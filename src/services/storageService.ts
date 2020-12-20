@@ -2,12 +2,14 @@ import { Cart } from '../models/Cart';
 import { Doctor } from '../models/Doctor';
 import { Patient } from '../models/Patient';
 import { Pharmacy } from '../models/Pharmacy';
+import { IDoctorFilterType } from './doctorFilterService';
 
 export enum Store {
 	Cart = 'Cart',
 	Patient = 'Patient',
 	Doctor = 'Doctor',
 	Pharmacy = 'Pharmacy',
+	DoctorFilter = 'DoctorFilter',
 }
 
 export const storageService = {
@@ -44,5 +46,11 @@ export const storageService = {
 	pharmacy: {
 		storeConnected: (value: Pharmacy): void => storageService.store(Store.Pharmacy, value),
 		getConnected: (): Pharmacy => storageService.get(Store.Pharmacy) as Pharmacy,
+	},
+
+	doctorFilter: {
+		store: (value: IDoctorFilterType): void => storageService.store(Store.DoctorFilter, value),
+		get: (): IDoctorFilterType => storageService.get(Store.DoctorFilter),
+		remove: (): void => storageService.remove(Store.DoctorFilter),
 	},
 };

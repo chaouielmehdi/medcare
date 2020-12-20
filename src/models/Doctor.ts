@@ -1,11 +1,11 @@
-import { fields, IdValueData } from './IdValueData';
+import { doctorFields, IdValueData } from './IdValueData';
 
 export enum Gender {
 	Male = 'Male',
 	Female = 'Female',
 }
 
-interface Consultation {
+export interface Consultation {
 	cabinet: {
 		available: boolean;
 		price?: number;
@@ -55,7 +55,7 @@ export const doctors: Doctor[] = [
 				available: false,
 			},
 		},
-		fields: [fields[0], fields[2]],
+		fields: [doctorFields[0], doctorFields[2]],
 	},
 	{
 		id: 1,
@@ -78,7 +78,7 @@ export const doctors: Doctor[] = [
 				available: false,
 			},
 		},
-		fields: [fields[4], fields[12]],
+		fields: [doctorFields[4], doctorFields[12]],
 	},
 	{
 		id: 2,
@@ -102,7 +102,7 @@ export const doctors: Doctor[] = [
 				price: 500,
 			},
 		},
-		fields: [fields[3]],
+		fields: [doctorFields[3]],
 	},
 	{
 		id: 3,
@@ -126,7 +126,7 @@ export const doctors: Doctor[] = [
 				price: 600,
 			},
 		},
-		fields: [fields[3], fields[5]],
+		fields: [doctorFields[3], doctorFields[5]],
 	},
 	{
 		id: 4,
@@ -149,6 +149,6 @@ export const doctors: Doctor[] = [
 				available: false,
 			},
 		},
-		fields: [fields[18], fields[4]],
+		fields: [doctorFields[18], doctorFields[4]],
 	},
 ];

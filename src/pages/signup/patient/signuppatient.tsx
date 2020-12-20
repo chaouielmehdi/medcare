@@ -14,12 +14,11 @@ function SignupPatient() {
 		password: '',
 		confirmpass: '',
 	});
-	const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	// const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 	const validate = {
 		fname: (event: React.ChangeEvent<HTMLInputElement>) => {
 			const value = event.target.value;
-			console.log(value);
 			if (value === '') {
 				const newErrors = { ...errors };
 				newErrors.fname = 'Le nom est obligatoire!';
@@ -28,7 +27,6 @@ function SignupPatient() {
 		},
 		lname: (event: React.ChangeEvent<HTMLInputElement>) => {
 			const value = event.target.value;
-			console.log(value);
 			if (value === '') {
 				const newErrors = { ...errors };
 				newErrors.lname = 'Le prénom est obligatoire!';
@@ -37,21 +35,19 @@ function SignupPatient() {
 		},
 		email: (event: React.ChangeEvent<HTMLInputElement>) => {
 			const value = event.target.value;
-			console.log(value);
 			if (value === '') {
 				const newErrors = { ...errors };
 				newErrors.email = 'Le email est obligatoire!';
 				setErrors(newErrors);
 			}
-			if (!re.test(String(value).toLowerCase())) {
-				const newErrors = { ...errors };
-				newErrors.email = 'Incorrect';
-				setErrors(newErrors);
-			}
+			// if (!re.test(String(value).toLowerCase())) {
+			// 	const newErrors = { ...errors };
+			// 	newErrors.email = 'Incorrect';
+			// 	setErrors(newErrors);
+			// }
 		},
 		phone: (event: React.ChangeEvent<HTMLInputElement>) => {
 			const value = event.target.value;
-			console.log(value);
 			if (value === '') {
 				const newErrors = { ...errors };
 				newErrors.phone = 'Le prénom est obligatoire!';
@@ -60,7 +56,6 @@ function SignupPatient() {
 		},
 		password: (event: React.ChangeEvent<HTMLInputElement>) => {
 			const value = event.target.value;
-			console.log(value);
 			if (value === '') {
 				const newErrors = { ...errors };
 				newErrors.password = 'Le prénom est obligatoire!';
@@ -69,7 +64,6 @@ function SignupPatient() {
 		},
 		confirmpass: (event: React.ChangeEvent<HTMLInputElement>) => {
 			const value = event.target.value;
-			console.log(value);
 			if (value === '') {
 				const newErrors = { ...errors };
 				newErrors.confirmpass = 'Le prénom est obligatoire!';

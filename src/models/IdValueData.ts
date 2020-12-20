@@ -2,7 +2,7 @@ export class IdValueData {
 	constructor(public id: number, public value: string) {}
 }
 
-export const fields: IdValueData[] = [
+export const doctorFields: IdValueData[] = [
 	{
 		id: 0,
 		value: 'L’allergologie',
@@ -201,24 +201,5 @@ export const cities: IdValueData[] = [
 	{
 		id: 3,
 		value: 'Tétouan',
-	},
-];
-
-export const doctorSpecialties: IdValueData[] = [
-	{
-		id: 0,
-		value: "L'allergologie",
-	},
-	{
-		id: 1,
-		value: "L'andrologie",
-	},
-	{
-		id: 2,
-		value: "L'anesthésiologie",
-	},
-	{
-		id: 3,
-		value: 'La cardiologie',
 	},
 ];

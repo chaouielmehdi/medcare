@@ -36,7 +36,7 @@ function Header(props: { cartCount: number }) {
 		{
 			show: true,
 			path: ROUTE.DOCTORS,
-			label: 'Médcins',
+			label: 'Médecins',
 		},
 		{
 			show: true,

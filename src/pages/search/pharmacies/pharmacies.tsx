@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Container from '../../../components/Container/Container';
+import Empty from '../../../components/Empty/Empty';
 import Input from '../../../components/Input/Input';
 import PharmacyCard from '../../../components/PharmacyCard/PharmacyCard';
 import Row from '../../../components/Row/Row';
@@ -27,34 +28,31 @@ function Pharmacies() {
 		setPharmacyName(value);
 	};
 
-	const filterByCity = (pharmacies: Pharmacy[]): Pharmacy[] => {
-		const cityName = selectedCity?.value;
-
-		if (cityName) {
-			return pharmacies.filter((pharmacy) =>
-				pharmacy.address.toLowerCase().includes(cityName.toLowerCase())
-			);
-		}
-
-		return pharmacies;
-	};
-
-	const filterByPharmacy = (pharmacies: Pharmacy[]): Pharmacy[] => {
-		if (pharmacyName) {
-			return pharmacies.filter((pharmacy) =>
-				pharmacy.name.toLowerCase().includes(pharmacyName.toLowerCase())
-			);
-		}
-
-		return pharmacies;
-	};
-
-	const filter = () => {
-		setPharmacies(filterByCity(filterByPharmacy(pharmacies)));
-	};
-
 	useEffect(() => {
-		filter();
+		const filterByCity = (pharmacies: Pharmacy[]): Pharmacy[] => {
+			const cityName = selectedCity?.value;
+
+			if (cityName) {
+				return pharmacies.filter((pharmacy) =>
+					pharmacy.address.toLowerCase().includes(cityName.toLowerCase())
+				);
+			}
+
+			return pharmacies;
+		};
+
+		const filterByPharmacy = (pharmacies: Pharmacy[]): Pharmacy[] => {
+			if (pharmacyName) {
+				return pharmacies.filter((pharmacy) =>
+					pharmacy.name.toLowerCase().includes(pharmacyName.toLowerCase())
+				);
+			}
+
+			return pharmacies;
+		};
+
+		const newPharmacies = filterByCity(filterByPharmacy(pharmacies));
+		setPharmacies(newPharmacies);
 	}, [selectedCity, pharmacyName]);
 
 	return (
@@ -97,6 +95,8 @@ function Pharmacies() {
 				</Row>
 			</div>
 			<>
+				<Empty show={!filteredPharmacies.length} />
+
 				{filteredPharmacies.map((pharmacy, index) => (
 					<div key={index} className="mb-4">
 						<PharmacyCard pharmacy={pharmacy} />

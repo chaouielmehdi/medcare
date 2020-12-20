@@ -23,7 +23,7 @@ function Medicines(props: { setCartCount: () => void }) {
 		setInputValue(value);
 	};
 
-	const filter = () => {
+	useEffect(() => {
 		const newMedicines = medicines.filter(
 			(medicine) =>
 				medicine.name.toLowerCase().includes(inputValue.toLowerCase()) ||
@@ -33,12 +33,7 @@ function Medicines(props: { setCartCount: () => void }) {
 				medicine.description.toLowerCase().includes(inputValue.toLowerCase()) ||
 				medicine.pharmacyName.toLowerCase().includes(inputValue.toLowerCase())
 		);
-
 		setFilteredMedicines(newMedicines);
-	};
-
-	useEffect(() => {
-		filter();
 	}, [inputValue]);
 
 	// Modal management

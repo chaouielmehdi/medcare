@@ -60,6 +60,14 @@ a {
 	background-color: #329897;
 }
 
+.btn-info:focus,
+.btn-info:hover,
+.btn-info:active {
+	color: #fff;
+	background-color: #277977 !important;
+	border-color: #277977 !important;
+}
+
 /* shadows */
 .box-shadow {
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
