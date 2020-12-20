@@ -88,7 +88,7 @@ function Cart() {
 													</div>
 													<div className="col-1 d-flex align-items-start justify-content-end">
 														<Button
-															type="info"
+															type="danger"
 															onClick={deleteItem(medicine?.id)}
 														>
 															<Icon name="trash-alt" />

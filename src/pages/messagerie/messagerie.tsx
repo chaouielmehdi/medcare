@@ -17,9 +17,7 @@ function Messagerie() {
 					<div className="border-case head-title text-center py-2">
 						<p className="m-0">MESSAGERIE</p>
 					</div>
-					<div className="d-flex justify-content-around my-3">
-						<MessageriePatientCard></MessageriePatientCard>
-					</div>
+					<MessageriePatientCard />
 				</div>
 			</Row>
 		</Container>

@@ -16,9 +16,10 @@ interface IConsBtnProps {
 interface IDoctorCardProps {
 	className?: string;
 	doctor: Doctor;
+	makeAppointment: (doctorId: number, type: IConsBtnProps['type']) => void;
 }
 
-const DoctorCard: FC<IDoctorCardProps> = ({ className, doctor }): ReactElement => {
+const DoctorCard: FC<IDoctorCardProps> = ({ className, doctor, makeAppointment }): ReactElement => {
 	const imgSrc: string = doctor.gender === Gender.Male ? DoctorMale : DoctorFemale;
 
 	const fields = () =>
@@ -28,9 +29,13 @@ const DoctorCard: FC<IDoctorCardProps> = ({ className, doctor }): ReactElement =
 			</span>
 		));
 
+	const handleConsultationClick = (doctorId: number, type: IConsBtnProps['type']) => () => {
+		makeAppointment(doctorId, type);
+	};
+
 	const consultationButton = ({ type, label, icon }: IConsBtnProps) =>
 		doctor.consultation[type].available && (
-			<Button icon={icon} className="mr-2">
+			<Button onClick={handleConsultationClick(doctor.id, type)} icon={icon} className="mr-2">
 				<>
 					{label}
 					{doctor.consultation[type].price

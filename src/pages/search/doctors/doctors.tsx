@@ -126,6 +126,10 @@ function Doctors() {
 		setFilteredDoctors(newDoctors);
 	}, [doctorFilter]);
 
+	const makeAppointment = (doctorId: number, type: 'video' | 'cabinet' | 'home'): void => {
+		console.log(doctorId, type);
+	};
+
 	return (
 		<Container>
 			<>
@@ -159,6 +163,15 @@ function Doctors() {
 							A domicile
 						</Button>
 					</Row>
+					{!doctorFilter.consultation.home.available &&
+						!doctorFilter.consultation.video.available &&
+						!doctorFilter.consultation.cabinet.available && (
+							<Row isShadowed={false} flex={{ justify: 'center', align: 'center' }}>
+								<span className="text-danger mt-2" style={{ fontSize: 14 }}>
+									Selectionnez au moins un élément pour avoir un résultat!
+								</span>
+							</Row>
+						)}
 					<Row isShadowed={false} flex={{ justify: 'around', align: 'center' }} className="mt-3">
 						<div className="input-group col-4">
 							<Input
@@ -213,7 +226,12 @@ function Doctors() {
 				<Empty show={!filteredDoctors.length} />
 
 				{filteredDoctors.map((doctor, index) => (
-					<DoctorCard key={index} className="mb-4" doctor={doctor} />
+					<DoctorCard
+						makeAppointment={makeAppointment}
+						key={index}
+						className="mb-4"
+						doctor={doctor}
+					/>
 				))}
 			</>
 		</Container>
