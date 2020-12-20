@@ -1,7 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import DoctorFemale from '../../assets/img/Doctor-Female.png';
 import DoctorMale from '../../assets/img/Doctor-Male.png';
-import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import './MessageriePatientCard.css';
 
@@ -35,8 +34,10 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 								<span className="font-weight-bold">Raison :</span> Mal de dent.
 							</p>
 							<p className="m-0">
-								<span className="font-weight-bold">Lien de consultation :</span>{' '}
-								https://meet.google.com/vbx-njnv-wfv
+								<span className="font-weight-bold">Lien de consultation :</span>
+								<a href="https://meet.google.com/vbx-njnv-wfv">
+									https://meet.google.com/vbx-njnv-wfv
+								</a>
 							</p>
 						</div>
 						<div className="mt-auto">
@@ -44,11 +45,6 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 								Votre demande de rendez-vous est confirmée
 							</p>
 						</div>
-					</div>
-					<div className="col-1 d-flex align-items-start justify-content-end">
-						<Button type="danger">
-							<Icon name="trash-alt" />
-						</Button>
 					</div>
 				</div>
 			</div>
@@ -82,11 +78,6 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 							</p>
 						</div>
 					</div>
-					<div className="col-1 d-flex align-items-start justify-content-end">
-						<Button type="danger">
-							<Icon name="trash-alt" />
-						</Button>
-					</div>
 				</div>
 			</div>
 			<div className="box-shadow border-radius container-fluid d-flex justify-content-center mt-3 p-3">
@@ -113,11 +104,6 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 						<div className="mt-auto">
 							<p className="m-0 mt-3 font-weight-bold c-green">Votre demande est acceptée</p>
 						</div>
-					</div>
-					<div className="col-1 d-flex align-items-start justify-content-end">
-						<Button type="danger">
-							<Icon name="trash-alt" />
-						</Button>
 					</div>
 				</div>
 			</div>

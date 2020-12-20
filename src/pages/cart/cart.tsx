@@ -7,11 +7,13 @@ import Input from '../../components/Input/Input';
 import Row from '../../components/Row/Row';
 import { medicines } from '../../models/Medicine';
 import { cartService } from '../../services/cartService';
+import { orderService } from '../../services/orderService';
 import { patientService } from '../../services/patientService';
+import { storageService } from '../../services/storageService';
 import './cart.css';
 
 function Cart(props: { setCartCount: () => void }) {
-	const cart = cartService.getAll();
+	const cart = cartService.getAll() || [];
 	const medsCartDefault = cart.map((element) => {
 		const foundMed = medicines.find((medicine) => element.medicineId === medicine.id);
 		return foundMed;
@@ -49,6 +51,31 @@ function Cart(props: { setCartCount: () => void }) {
 		}
 	});
 	const [total, setTotal] = useState(totalDefault);
+
+	const [check, setCheck] = useState(false);
+	const checkcondition = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const value = event.target.checked;
+		console.log(value);
+		let newValue;
+		if (value) {
+			newValue = true;
+		} else {
+			newValue = false;
+		}
+		setCheck(newValue);
+	};
+
+	//>>++
+	const handleSubmit = () => {
+		let cart = cartService.getAll() || [];
+		console.log(cart);
+		orderService.passOrder({ owner: patient.id, content: cart, total: total });
+
+		storageService.cart.remove();
+		setMedsCart([]);
+		props.setCartCount();
+	};
+	//<<++
 
 	return (
 		<Container>
@@ -131,24 +158,29 @@ function Cart(props: { setCartCount: () => void }) {
 										</div>
 										<div className="d-flex justify-content-start">
 											<Input
+												id="frais-inclus"
 												className="radio-check mx-2 mb-2"
 												type="radio"
 												name="radioTest"
 												height={20}
 												width={20}
+												checked={true}
 											/>
-											<label>Frais de livraison inclus</label>
+											<label htmlFor="frais-inclus">Frais de livraison inclus</label>
 										</div>
 
 										<div className="d-flex justify-content-start ">
 											<Input
+												id="frais-ninclus"
 												className=" mx-2 mb-2"
 												type="radio"
 												name="radioTest"
 												height={20}
 												width={20}
-											></Input>
-											<label>Frais de livraison non inclus</label>
+											/>
+											<label htmlFor="frais-ninclus">
+												Frais de livraison non inclus
+											</label>
 										</div>
 									</form>
 								</div>
@@ -160,24 +192,29 @@ function Cart(props: { setCartCount: () => void }) {
 										</div>
 										<div className="d-flex justify-content-start">
 											<Input
+												id="p-online"
 												className="radio-check mx-2 mb-2"
 												type="radio"
 												name="radioTest"
 												height={20}
 												width={20}
-											></Input>
-											<label>Paiement en ligne</label>
+												checked={true}
+											/>
+											<label htmlFor="p-online">Paiement en ligne</label>
 										</div>
 
 										<div className="d-flex justify-content-start ">
 											<Input
+												id="p-delivery"
 												className=" mx-2 mb-2"
 												type="radio"
 												name="radioTest"
 												height={20}
 												width={20}
-											></Input>
-											<label>Paiement en espece à la livraison</label>
+											/>
+											<label htmlFor="p-delivery">
+												Paiement en espece à la livraison
+											</label>
 										</div>
 									</form>
 								</div>
@@ -200,13 +237,23 @@ function Cart(props: { setCartCount: () => void }) {
 											<p>{total + 25} Dhs</p>
 										</div>
 										<div className="d-flex align-items-start ml-4 mt-2">
-											<input type="checkbox" className="form-check-input" />
-											<p style={{ fontSize: '12px' }}>
+											<input
+												id="readGC"
+												type="checkbox"
+												className="form-check-input"
+												onChange={checkcondition}
+											/>
+											<label htmlFor="readGC" style={{ fontSize: '12px' }}>
 												J'ai lu et j'accepte les Conditions Générales
-											</p>
+											</label>
 										</div>
 										<div className="d-flex justify-content-center">
-											<Button className="button-style" type="light">
+											<Button
+												className="button-style"
+												type="light"
+												onClick={handleSubmit}
+												disabled={!check}
+											>
 												Commander
 											</Button>
 										</div>
