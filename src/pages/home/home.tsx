@@ -101,7 +101,7 @@ function Home() {
 							icon="video"
 							type={doctorFilter.consultation?.video.available ? 'info' : 'light'}
 						>
-							En video
+							En vidéo
 						</Button>
 						<Button
 							onClick={handleConsultationSelected('home')}

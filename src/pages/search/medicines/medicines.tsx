@@ -4,7 +4,7 @@ import Container from '../../../components/Container/Container';
 import Empty from '../../../components/Empty/Empty';
 import Input from '../../../components/Input/Input';
 import MedicineCard from '../../../components/MedicineCard/MedicineCard';
-import AddToCartModal from '../../../components/modals/AddToCart';
+import AddToCartModal from '../../../components/modals/AddToCartModal';
 import Row from '../../../components/Row/Row';
 import { Medicine, medicines } from '../../../models/Medicine';
 import { pharmacies } from '../../../models/Pharmacy';

@@ -4,6 +4,7 @@ import Container from '../../../components/Container/Container';
 import DoctorCard from '../../../components/DoctorCard/DoctorCard';
 import Empty from '../../../components/Empty/Empty';
 import Input from '../../../components/Input/Input';
+import MakeAppointmentModal from '../../../components/modals/MakeAppointmentModal';
 import Row from '../../../components/Row/Row';
 import { Doctor, doctors } from '../../../models/Doctor';
 import { cities, doctorFields, IdValueData } from '../../../models/IdValueData';
@@ -126,8 +127,18 @@ function Doctors() {
 		setFilteredDoctors(newDoctors);
 	}, [doctorFilter]);
 
+	// Modal management
+	const [appointmentModalData, setAppointmentModalData] = useState<{
+		doctorId: number;
+		type: 'video' | 'cabinet' | 'home';
+	}>();
+
+	const [modal, setModal] = useState<boolean>(false);
+	const toggle = () => setModal(!modal);
+
 	const makeAppointment = (doctorId: number, type: 'video' | 'cabinet' | 'home'): void => {
-		console.log(doctorId, type);
+		setAppointmentModalData({ doctorId, type });
+		toggle();
 	};
 
 	return (
@@ -152,7 +163,7 @@ function Doctors() {
 							icon="video"
 							type={doctorFilter.consultation.video.available ? 'info' : 'light'}
 						>
-							En video
+							En vidéo
 						</Button>
 						<Button
 							onClick={handleConsultationSelected('home')}
@@ -233,6 +244,8 @@ function Doctors() {
 						doctor={doctor}
 					/>
 				))}
+
+				<MakeAppointmentModal data={appointmentModalData} toggle={toggle} isOpen={modal} />
 			</>
 		</Container>
 	);
