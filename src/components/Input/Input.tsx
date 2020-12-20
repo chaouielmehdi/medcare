@@ -5,6 +5,7 @@ type InputType = 'text' | 'checkbox' | 'radio' | 'number' | 'password' | 'file';
 type IconPosition = 'prepend' | 'append';
 
 interface IInputProps {
+	id?: string;
 	name?: string;
 	type?: InputType;
 	icon?: string;
@@ -16,10 +17,12 @@ interface IInputProps {
 	valid?: boolean;
 	defaultValue?: string | number;
 	value?: string | number;
+	checked?: boolean | undefined;
 	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<IProps & IInputProps> = ({
+	id,
 	name,
 	placeholder,
 	icon,
@@ -32,6 +35,7 @@ const Input: FC<IProps & IInputProps> = ({
 	valid,
 	defaultValue,
 	value,
+	checked,
 	onChange,
 }): ReactElement => {
 	const iconPosition = 'input-group-' + iconPos;
@@ -49,6 +53,7 @@ const Input: FC<IProps & IInputProps> = ({
 		<>
 			{iconPos === 'prepend' && getIcon()}
 			<input
+				id={id}
 				name={name}
 				type={type}
 				className={inputClass}
@@ -58,6 +63,7 @@ const Input: FC<IProps & IInputProps> = ({
 				onChange={onChange}
 				defaultValue={defaultValue}
 				value={value}
+				checked={checked}
 			/>
 			{iconPos === 'append' && getIcon()}
 		</>

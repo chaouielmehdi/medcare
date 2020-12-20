@@ -1,5 +1,6 @@
 import { Cart } from '../models/Cart';
 import { Doctor } from '../models/Doctor';
+import { Order } from '../models/Order';
 import { Patient } from '../models/Patient';
 import { Pharmacy } from '../models/Pharmacy';
 import { IDoctorFilterType } from './doctorFilterService';
@@ -10,6 +11,7 @@ export enum Store {
 	Doctor = 'Doctor',
 	Pharmacy = 'Pharmacy',
 	DoctorFilter = 'DoctorFilter',
+	Order = 'Order',
 }
 
 export const storageService = {
@@ -30,6 +32,7 @@ export const storageService = {
 	cart: {
 		store: (value: Cart[]): void => storageService.store(Store.Cart, value),
 		get: (): Cart[] => storageService.get(Store.Cart) as Cart[],
+		remove: (): void => storageService.remove(Store.Cart),
 	},
 
 	patient: {
@@ -52,5 +55,9 @@ export const storageService = {
 		store: (value: IDoctorFilterType): void => storageService.store(Store.DoctorFilter, value),
 		get: (): IDoctorFilterType => storageService.get(Store.DoctorFilter),
 		remove: (): void => storageService.remove(Store.DoctorFilter),
+	},
+	order: {
+		store: (value: Order[]): void => storageService.store(Store.Order, value),
+		get: (): Order[] => storageService.get(Store.Order) as Order[],
 	},
 };

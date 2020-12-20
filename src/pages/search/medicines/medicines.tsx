@@ -22,7 +22,7 @@ function Medicines(props: { setCartCount: () => void }) {
 
 		setInputValue(value);
 	};
-
+	// eslint-disable-next-line
 	useEffect(() => {
 		const newMedicines = medicines.filter(
 			(medicine) =>

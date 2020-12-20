@@ -1,7 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import DoctorFemale from '../../assets/img/Doctor-Female.png';
 import DoctorMale from '../../assets/img/Doctor-Male.png';
-import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import './MessageriePatientCard.css';
 
@@ -27,20 +26,25 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 								<span className="font-weight-bold">Type de consultation :</span> consultation
 								en ligne
 							</p>
-							<p className="m-0">Date de consultation : 16 Novembre 2020 à 15:30</p>
-							<p className="m-0">Raison : Mal de dent.</p>
-							<p className="m-0">Lien de consultation : https://meet.google.com/vbx-njnv-wfv</p>
+							<p className="m-0">
+								<span className="font-weight-bold">Date de consultation :</span> 16 Novembre
+								2020 à 15:30
+							</p>
+							<p className="m-0">
+								<span className="font-weight-bold">Raison :</span> Mal de dent.
+							</p>
+							<p className="m-0">
+								<span className="font-weight-bold">Lien de consultation :</span>
+								<a href="https://meet.google.com/vbx-njnv-wfv">
+									https://meet.google.com/vbx-njnv-wfv
+								</a>
+							</p>
 						</div>
 						<div className="mt-auto">
 							<p className="m-0 mt-3 font-weight-bold c-green">
 								Votre demande de rendez-vous est confirmée
 							</p>
 						</div>
-					</div>
-					<div className="col-1 d-flex align-items-start justify-content-end">
-						<Button type="danger">
-							<Icon name="trash-alt" />
-						</Button>
 					</div>
 				</div>
 			</div>
@@ -56,20 +60,23 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 							<p className="card-name">Dr. Imad Ait Taleb</p>
 						</div>
 						<div>
-							<p className="m-0">Type de consultation : consultation en cabinet</p>
-							<p className="m-0">Date de consultation : 16 Novembre 2020 à 11:30</p>
-							<p className="m-0">Raison : Détatrage dentaire.</p>
+							<p className="m-0">
+								<span className="font-weight-bold">Type de consultation :</span> consultation
+								en cabinet
+							</p>
+							<p className="m-0">
+								<span className="font-weight-bold">Date de consultation :</span> 16 Novembre
+								2020 à 11:30
+							</p>
+							<p className="m-0">
+								<span className="font-weight-bold">Raison :</span> Détatrage dentaire.
+							</p>
 						</div>
 						<div className="mt-auto">
 							<p className="m-0 mt-3 font-weight-bold text-danger">
 								Votre demande de rendez-vous est refusée
 							</p>
 						</div>
-					</div>
-					<div className="col-1 d-flex align-items-start justify-content-end">
-						<Button type="danger">
-							<Icon name="trash-alt" />
-						</Button>
 					</div>
 				</div>
 			</div>
@@ -86,17 +93,17 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 							<p className="card-name">Pharmacie El Bayrouni</p>
 						</div>
 						<div>
-							<p className="m-0">Date de commande : 22 Novembre 2020 à 16:43</p>
-							<p className="m-0">Raison : Détatrage dentaire.</p>
+							<p className="m-0">
+								<span className="font-weight-bold">Date de commande :</span> 22 Novembre 2020
+								à 16:43
+							</p>
+							<p className="m-0">
+								<span className="font-weight-bold">Raison :</span> Détatrage dentaire.
+							</p>
 						</div>
 						<div className="mt-auto">
 							<p className="m-0 mt-3 font-weight-bold c-green">Votre demande est acceptée</p>
 						</div>
-					</div>
-					<div className="col-1 d-flex align-items-start justify-content-end">
-						<Button type="danger">
-							<Icon name="trash-alt" />
-						</Button>
 					</div>
 				</div>
 			</div>

@@ -10,7 +10,7 @@ function Messagerie() {
 		<Container>
 			<Row isShadowed={false} flex={{ align: 'center' }} className=" d-flex flex-column p-4">
 				<div className="container-fluid px-5">
-					<div className="head-text text-center my-3">
+					<div className="head-text text-center mb-5">
 						<p>BIENVENUE DANS VOTRE ESPACE !</p>
 						<p>{patient.name}</p>
 					</div>
