@@ -27,7 +27,7 @@ function Pharmacies() {
 		const value = event.target.value;
 		setPharmacyName(value);
 	};
-
+	// eslint-disable-next-line
 	useEffect(() => {
 		const filterByCity = (pharmacies: Pharmacy[]): Pharmacy[] => {
 			const cityName = selectedCity?.value;

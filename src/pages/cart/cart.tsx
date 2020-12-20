@@ -10,7 +10,7 @@ import { cartService } from '../../services/cartService';
 import { patientService } from '../../services/patientService';
 import './cart.css';
 
-function Cart() {
+function Cart(props: { setCartCount: () => void }) {
 	const cart = cartService.getAll();
 	const medsCartDefault = cart.map((element) => {
 		const foundMed = medicines.find((medicine) => element.medicineId === medicine.id);
@@ -28,6 +28,8 @@ function Cart() {
 					const foundMed = medicines.find((medicine) => element.medicineId === medicine.id);
 					return foundMed;
 				});
+
+				props.setCartCount();
 
 				setMedsCart(newMedsCart);
 				let newTotal = 0;
@@ -66,7 +68,10 @@ function Cart() {
 						<div className="d-flex justify-content-around my-3">
 							<div className="w-100 d-flex flex-column my-3">
 								{medsCart.map((medicine, index) => (
-									<div className="box-shadow border-radius d-flex justify-content-between my-3 p-3">
+									<div
+										className="box-shadow border-radius d-flex justify-content-between my-3 p-3"
+										key={'cart-item' + index}
+									>
 										<div className="col-3 d-flex">
 											<img src={medicine?.imageUrl} width="150" alt="medicine" />
 										</div>

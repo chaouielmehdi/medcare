@@ -72,7 +72,7 @@ const App = () => {
 					<Route path={ROUTE.SIGN_UP_DOCTOR} children={<SignupDoctor />} />
 					<Route path={ROUTE.SIGN_UP_PATIENT} children={<SignupPatient />} />
 					<Route path={ROUTE.SIGN_UP_PHARMACIEN} children={<SignupPharmacien />} />
-					<Route path={ROUTE.CART} children={<Cart />} />
+					<Route path={ROUTE.CART} children={<Cart setCartCount={handleSetCartCount} />} />
 
 					<Route path="*">
 						<Redirect to={ROUTE.HOME} />
