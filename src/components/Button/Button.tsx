@@ -17,6 +17,8 @@ interface IButtonProps {
 	type?: ButtonType;
 	icon?: string;
 	disabled?: boolean;
+	width?: number;
+	height?: number;
 	onClick?: (event: React.MouseEvent) => void;
 }
 
@@ -26,13 +28,21 @@ const Button: FC<IProps & IButtonProps> = ({
 	icon,
 	type = 'light',
 	disabled,
+	width,
+	height,
 	onClick,
 }): ReactElement => {
 	const buttonClass = className + ' btn btn-' + type + (type === 'light' ? ' border' : '');
 	const iconClass = 'mr-2 fas fa-' + icon;
 
 	return (
-		<button disabled={disabled} onClick={onClick} type="button" className={buttonClass}>
+		<button
+			disabled={disabled}
+			style={{ width, height }}
+			onClick={onClick}
+			type="button"
+			className={buttonClass}
+		>
 			{icon && <i className={iconClass}></i>}
 			{children}
 		</button>

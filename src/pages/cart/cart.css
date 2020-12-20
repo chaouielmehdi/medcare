@@ -16,7 +16,7 @@
 }
 .block-style {
 	border-style: solid;
-	border-color: rgb(0, 0, 0);
+	border-color: rgb(65, 152, 152);
 	background-color: rgb(238, 238, 238);
 }
 input[type='file'] {
