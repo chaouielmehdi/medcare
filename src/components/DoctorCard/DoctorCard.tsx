@@ -39,7 +39,7 @@ const DoctorCard: FC<IDoctorCardProps> = ({ className, doctor, makeAppointment }
 				<>
 					{label}
 					{doctor.consultation[type].price
-						? ' (' + doctor.consultation[type].price + ' MAD)'
+						? ' (' + doctor.consultation[type].price + ' Dhs)'
 						: ' (non précis)'}
 				</>
 			</Button>
@@ -80,7 +80,7 @@ const DoctorCard: FC<IDoctorCardProps> = ({ className, doctor, makeAppointment }
 					<Row flex={{ align: 'start', justify: 'between' }} isShadowed={false}>
 						<div className="col-12 p-0 mt-4">
 							{consultationButton({ type: 'cabinet', icon: 'building', label: 'Au cabinet' })}
-							{consultationButton({ type: 'video', icon: 'video', label: 'En video' })}
+							{consultationButton({ type: 'video', icon: 'video', label: 'En vidéo' })}
 							{consultationButton({ type: 'home', icon: 'home', label: 'A domicile' })}
 						</div>
 					</Row>
