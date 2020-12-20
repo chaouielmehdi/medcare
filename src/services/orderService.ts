@@ -9,4 +9,7 @@ export const orderService = {
 		storageService.order.store(order);
 		toast.success('La command a été passé avec succès');
 	},
+	getAll: (): Order[] => {
+		return storageService.order.get();
+	},
 };

@@ -68,13 +68,22 @@ function Cart(props: { setCartCount: () => void }) {
 	//>>++
 	const handleSubmit = () => {
 		let cart = cartService.getAll() || [];
-		console.log(cart);
-		orderService.passOrder({ owner: patient.id, content: cart, total: total });
+		//console.log(cart);
+
+		orderService.passOrder({ owner: patient.id, content: cart, total: total, date: dateTime() });
 
 		storageService.cart.remove();
 		setMedsCart([]);
 		props.setCartCount();
 	};
+
+	function dateTime(): string {
+		let today = new Date();
+		let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+		let time = today.getHours() + ':' + today.getMinutes();
+		let dateTime = date + ' à ' + time;
+		return dateTime;
+	}
 	//<<++
 
 	return (
