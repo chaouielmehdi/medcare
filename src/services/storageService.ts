@@ -1,3 +1,4 @@
+import { Appointment } from '../models/Appointment';
 import { Cart } from '../models/Cart';
 import { Doctor } from '../models/Doctor';
 import { Order } from '../models/Order';
@@ -12,6 +13,7 @@ export enum Store {
 	Pharmacy = 'Pharmacy',
 	DoctorFilter = 'DoctorFilter',
 	Order = 'Order',
+	Appointment = 'Appointment',
 }
 
 export const storageService = {
@@ -59,5 +61,9 @@ export const storageService = {
 	order: {
 		store: (value: Order[]): void => storageService.store(Store.Order, value),
 		get: (): Order[] => storageService.get(Store.Order) as Order[],
+	},
+	appointment: {
+		store: (value: Appointment[]): void => storageService.store(Store.Appointment, value),
+		get: (): Appointment[] => storageService.get(Store.Appointment) as Appointment[],
 	},
 };

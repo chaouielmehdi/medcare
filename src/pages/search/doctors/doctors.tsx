@@ -8,6 +8,7 @@ import MakeAppointmentModal from '../../../components/modals/MakeAppointmentModa
 import Row from '../../../components/Row/Row';
 import { Doctor, doctors } from '../../../models/Doctor';
 import { cities, doctorFields, IdValueData } from '../../../models/IdValueData';
+import { appointmentService } from '../../../services/appointmentService';
 import {
 	doctorFilterService,
 	IDoctorFilterType as IDoctorFilter,
@@ -15,6 +16,8 @@ import {
 } from '../../../services/doctorFilterService';
 
 function Doctors() {
+	console.log(appointmentService.get());
+
 	let defaultDoctorFilter: IDoctorFilter = doctorFilterService.get();
 	if (!defaultDoctorFilter) {
 		defaultDoctorFilter = {
@@ -31,6 +34,7 @@ function Doctors() {
 			},
 		};
 	}
+
 	doctorFilterService.remove();
 
 	// -----------------

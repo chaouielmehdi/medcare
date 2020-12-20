@@ -1,8 +1,11 @@
 import { format, addDays } from 'date-fns';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Appointment } from '../../models/Appointment';
 import { doctors } from '../../models/Doctor';
+import { appointmentService } from '../../services/appointmentService';
+import Button from '../Button/Button';
 import Row from '../Row/Row';
 
 interface IAddToCardProps {
@@ -15,15 +18,15 @@ interface IAddToCardProps {
 	};
 }
 
-interface Appointment {
-	doctorId?: number;
-	consultationType?: 'video' | 'cabinet' | 'home';
-	date?: string;
-	reason?: string;
-}
-
 const MakeAppointmentModal: FC<IAddToCardProps> = ({ className, isOpen, toggle, data }) => {
 	const doctor = doctors.find((doctor) => doctor.id === data?.doctorId);
+
+	const appointmentDefault = {
+		consultationType: data?.type,
+		doctorId: data?.doctorId,
+	};
+
+	const [appointment, setAppointment] = useState<Appointment>(appointmentDefault);
 
 	let consultation = '';
 	if (data?.type === 'cabinet') {
@@ -39,17 +42,23 @@ const MakeAppointmentModal: FC<IAddToCardProps> = ({ className, isOpen, toggle, 
 		consultationPrice = doctor?.consultation[data?.type].price + ' Dhs';
 	}
 
-	const now = format(addDays(new Date(), 1), "yyyy-MM-dd'T'HH:mm:ss");
-
-	const [appointment, setAppointment] = useState<Appointment>({
-		consultationType: data?.type,
-		doctorId: data?.doctorId,
-	});
+	const now = format(addDays(new Date(), 1), "yyyy-MM-dd'T'HH:mm");
 
 	const handleDateChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		const date = event.target.value;
-		const newAppointment = { ...appointment, date };
+		const newAppointment = { ...appointment, ...appointmentDefault, date };
 		setAppointment(newAppointment);
+	};
+
+	const handleReasonChanged = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+		const reason = event.target.value;
+		const newAppointment = { ...appointment, ...appointmentDefault, reason };
+		setAppointment(newAppointment);
+	};
+
+	const handleConfirm = (): void => {
+		appointmentService.add(appointment);
+		toggle();
 	};
 
 	return (
@@ -80,6 +89,7 @@ const MakeAppointmentModal: FC<IAddToCardProps> = ({ className, isOpen, toggle, 
 							style={{ width: 250 }}
 							className="form-control ml-1"
 							type="datetime-local"
+							id="example-datetime-local-input"
 							min={now}
 							onChange={handleDateChanged}
 						/>
@@ -88,11 +98,26 @@ const MakeAppointmentModal: FC<IAddToCardProps> = ({ className, isOpen, toggle, 
 						<span className="font-weight-bold" style={{ width: 120 }}>
 							Raison :
 						</span>
-						<textarea className="form-control ml-1" style={{ width: 250 }} />
+						<textarea
+							onChange={handleReasonChanged}
+							className="form-control ml-1"
+							style={{ width: 250 }}
+						/>
 					</Row>
 				</ModalBody>
 				<ModalFooter>
-					<div className="d-flex justify-content-between align-items-center w-100">footer</div>
+					<div className="d-flex justify-content-between align-items-center w-100">
+						<div className="d-flex justify-content-center align-items-center w-100 mt-2">
+							<Button
+								onClick={handleConfirm}
+								disabled={!appointment.date || !appointment.reason}
+								icon="shopping-cart"
+								type="info"
+							>
+								Confirmer
+							</Button>
+						</div>
+					</div>
 				</ModalFooter>
 			</Modal>
 		</>

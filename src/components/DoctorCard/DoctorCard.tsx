@@ -79,7 +79,11 @@ const DoctorCard: FC<IDoctorCardProps> = ({ className, doctor, makeAppointment }
 
 					<Row flex={{ align: 'start', justify: 'between' }} isShadowed={false}>
 						<div className="col-12 p-0 mt-4">
-							{consultationButton({ type: 'cabinet', icon: 'building', label: 'Au cabinet' })}
+							{consultationButton({
+								type: 'cabinet',
+								icon: 'building',
+								label: 'Au cabinet',
+							})}
 							{consultationButton({ type: 'video', icon: 'video', label: 'En vidéo' })}
 							{consultationButton({ type: 'home', icon: 'home', label: 'A domicile' })}
 						</div>
