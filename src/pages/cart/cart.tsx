@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Route, useHistory } from 'react-router-dom';
+import { ROUTE } from '../../App';
 import Button from '../../components/Button/Button';
 import Container from '../../components/Container/Container';
 import Empty from '../../components/Empty/Empty';
@@ -13,6 +15,7 @@ import { storageService } from '../../services/storageService';
 import './cart.css';
 
 function Cart(props: { setCartCount: () => void }) {
+	const history = useHistory();
 	const cart = cartService.getAll() || [];
 	const medsCartDefault = cart.map((element) => {
 		const foundMed = medicines.find((medicine) => element.medicineId === medicine.id);
@@ -20,7 +23,6 @@ function Cart(props: { setCartCount: () => void }) {
 	});
 	const [medsCart, setMedsCart] = useState(medsCartDefault);
 	const patient = patientService.getConnected();
-
 	const deleteItem = (medicineId: number | undefined) => {
 		return () => {
 			if (medicineId) {
@@ -51,7 +53,6 @@ function Cart(props: { setCartCount: () => void }) {
 		}
 	});
 	const [total, setTotal] = useState(totalDefault);
-
 	const [check, setCheck] = useState(false);
 	const checkcondition = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.checked;
@@ -64,19 +65,16 @@ function Cart(props: { setCartCount: () => void }) {
 		}
 		setCheck(newValue);
 	};
-
-	//>>++
 	const handleSubmit = () => {
 		let cart = cartService.getAll() || [];
-		//console.log(cart);
 
 		orderService.passOrder({ owner: patient.id, content: cart, total: total, date: dateTime() });
 
 		storageService.cart.remove();
 		setMedsCart([]);
 		props.setCartCount();
+		history.push(ROUTE.MESSAGERIE);
 	};
-
 	function dateTime(): string {
 		let today = new Date();
 		let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -84,8 +82,6 @@ function Cart(props: { setCartCount: () => void }) {
 		let dateTime = date + ' à ' + time;
 		return dateTime;
 	}
-	//<<++
-
 	return (
 		<Container>
 			<Row isShadowed={false} flex={{ align: 'center' }} className="d-flex flex-column p-4">

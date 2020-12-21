@@ -47,9 +47,9 @@ const MessagerieDoctorCard: FC<IMessageriePatientCardProps> = ({ className }): R
 							<div>
 								<p className="m-0">
 									<span className="font-weight-bold">Type de consultation :</span>{' '}
-									{card.consultationType === 'cabinet'
-										? 'consultation en cabinet'
-										: 'consultation en ligne'}
+									{card.consultationType === 'cabinet' ? 'consultation en cabinet' : ''}
+									{card.consultationType === 'video' ? 'consultation en ligne' : ''}
+									{card.consultationType === 'home' ? 'consultation a domicile' : ''}
 									{/* consultation en ligne */}
 								</p>
 								<p className="m-0">
