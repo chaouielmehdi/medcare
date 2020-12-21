@@ -76,7 +76,7 @@ function SignupPatient() {
 			<Row isShadowed={false} className=" d-flex flex-column align-items-center">
 				<div className="border-case" style={{ width: '650px' }}>
 					<div className="border-case head-title text-center">
-						<p className="head-title ">INSCRIPTION</p>
+						<p className="head-title ">INSCRIPTION Patient</p>
 					</div>
 
 					<div className=" d-flex flex-column ">

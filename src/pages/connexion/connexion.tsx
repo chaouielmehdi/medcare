@@ -13,8 +13,8 @@ import './connexion.css';
 function Connexion() {
 	const history = useHistory();
 
-	const navigateToSignUpPatient = () => {
-		history.push(ROUTE.SIGN_UP_PATIENT);
+	const navigateToSignUp = (route: ROUTE) => () => {
+		history.push(route);
 	};
 
 	function handleSubmit() {
@@ -109,9 +109,31 @@ function Connexion() {
 								</Button>
 							</div>
 							<p>Vous n'avez pas encore un compte? Inscrivez-vous !</p>
-							<div className="d-flex justify-content-center">
-								<Button onClick={navigateToSignUpPatient} type="light">
-									S'inscrire
+							<div className="row w-50">
+								<Button
+									onClick={navigateToSignUp(ROUTE.SIGN_UP_PATIENT)}
+									type="light"
+									className="my-2 w-100"
+								>
+									S'inscrire Patient
+								</Button>
+							</div>
+							<div className="row w-50">
+								<Button
+									onClick={navigateToSignUp(ROUTE.SIGN_UP_DOCTOR)}
+									type="light"
+									className="my-2 w-100"
+								>
+									S'inscrire Médecin
+								</Button>
+							</div>
+							<div className="row w-50">
+								<Button
+									onClick={navigateToSignUp(ROUTE.SIGN_UP_PHARMACIEN)}
+									type="light"
+									className="my-2 w-100"
+								>
+									S'inscrire Pharmacien
 								</Button>
 							</div>
 						</div>

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ROUTE } from '../../../App';
 import Button from '../../../components/Button/Button';
 import Container from '../../../components/Container/Container';
 import DoctorCard from '../../../components/DoctorCard/DoctorCard';
@@ -13,8 +16,11 @@ import {
 	IDoctorFilterType as IDoctorFilter,
 	IDoctorFilterType,
 } from '../../../services/doctorFilterService';
+import { patientService } from '../../../services/patientService';
 
 function Doctors() {
+	const history = useHistory();
+
 	let defaultDoctorFilter: IDoctorFilter = doctorFilterService.get();
 	if (!defaultDoctorFilter) {
 		defaultDoctorFilter = {
@@ -138,8 +144,15 @@ function Doctors() {
 	const toggle = () => setModal(!modal);
 
 	const makeAppointment = (doctorId: number, type: 'video' | 'cabinet' | 'home'): void => {
-		setAppointmentModalData({ doctorId, type });
-		toggle();
+		const isConnected = patientService.isConnected();
+
+		if (isConnected) {
+			setAppointmentModalData({ doctorId, type });
+			toggle();
+		} else {
+			toast.warn("Connectez-vous d'abord!");
+			history.push(ROUTE.LOGIN);
+		}
 	};
 
 	return (

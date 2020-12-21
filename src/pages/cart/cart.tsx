@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { ROUTE } from '../../App';
 import Button from '../../components/Button/Button';
 import Container from '../../components/Container/Container';
@@ -16,6 +16,13 @@ import './cart.css';
 
 function Cart(props: { setCartCount: () => void }) {
 	const history = useHistory();
+
+	// livraisonChecked
+	const [livraison, setLivraison] = useState(true);
+	const livraisonChecked = (checked: boolean) => () => {
+		setLivraison(checked);
+	};
+
 	const cart = cartService.getAll() || [];
 	const medsCartDefault = cart.map((element) => {
 		const foundMed = medicines.find((medicine) => element.medicineId === medicine.id);
@@ -157,37 +164,36 @@ function Cart(props: { setCartCount: () => void }) {
 							<div className="col-4 d-flex flex-column mt-3">
 								<div className="border-radius box-shadow mt-3 p-2">
 									<p className="head-section">LIVRAISON A DOMICILE</p>
-									<form className="d-flex flex-column m-3">
-										<div>
-											<p>Cochez votre choix : </p>
-										</div>
-										<div className="d-flex justify-content-start">
-											<Input
-												id="frais-inclus"
-												className="radio-check mx-2 mb-2"
-												type="radio"
-												name="radioTest"
-												height={20}
-												width={20}
-												checked={true}
-											/>
-											<label htmlFor="frais-inclus">Frais de livraison inclus</label>
-										</div>
+									<div>
+										<p>Cochez votre choix : </p>
+									</div>
+									<div className="d-flex justify-content-start">
+										<Input
+											id="frais-inclus"
+											className="radio-check mx-2 mb-2"
+											type="radio"
+											name="radioTest"
+											height={20}
+											width={20}
+											checked={livraison}
+											onChange={livraisonChecked(true)}
+										/>
+										<label htmlFor="frais-inclus">Frais de livraison inclus</label>
+									</div>
 
-										<div className="d-flex justify-content-start ">
-											<Input
-												id="frais-ninclus"
-												className=" mx-2 mb-2"
-												type="radio"
-												name="radioTest"
-												height={20}
-												width={20}
-											/>
-											<label htmlFor="frais-ninclus">
-												Frais de livraison non inclus
-											</label>
-										</div>
-									</form>
+									<div className="d-flex justify-content-start ">
+										<Input
+											id="frais-ninclus"
+											className=" mx-2 mb-2"
+											type="radio"
+											name="radioTest"
+											height={20}
+											width={20}
+											checked={!livraison}
+											onChange={livraisonChecked(false)}
+										/>
+										<label htmlFor="frais-ninclus">Frais de livraison non inclus</label>
+									</div>
 								</div>
 								<div className="border-radius box-shadow mt-3 p-2">
 									<p className="head-section">MODE DE PAIEMENT</p>
@@ -203,7 +209,6 @@ function Cart(props: { setCartCount: () => void }) {
 												name="radioTest"
 												height={20}
 												width={20}
-												checked={true}
 											/>
 											<label htmlFor="p-online">Paiement en ligne</label>
 										</div>
@@ -233,13 +238,13 @@ function Cart(props: { setCartCount: () => void }) {
 											</div>
 											<div className="d-flex flex-column">
 												<p>{total} Dhs</p>
-												<p>25 Dhs</p>
+												<p>{livraison ? '14.5' : '0'} Dhs</p>
 											</div>
 										</div>
 										<hr style={{ width: '280px', border: '1px solid #ccc' }} />
 										<div className="d-flex justify-content-around">
 											<p>Total : </p>
-											<p>{total + 25} Dhs</p>
+											<p>{total + (livraison ? 14.5 : 0)} Dhs</p>
 										</div>
 										<div className="d-flex align-items-start ml-4 mt-2">
 											<input

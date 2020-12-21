@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ROUTE } from '../../../App';
 import Container from '../../../components/Container/Container';
 import Empty from '../../../components/Empty/Empty';
 import Input from '../../../components/Input/Input';
@@ -9,8 +11,11 @@ import Row from '../../../components/Row/Row';
 import { Medicine, medicines } from '../../../models/Medicine';
 import { pharmacies } from '../../../models/Pharmacy';
 import { medicineFilterService } from '../../../services/medicineFilterService';
+import { patientService } from '../../../services/patientService';
 
 function Medicines(props: { setCartCount: () => void }) {
+	const history = useHistory();
+
 	const { pharmacyId } = useParams<{ pharmacyId: string }>();
 
 	const getDefaultInputValue = (): string => {
@@ -54,8 +59,15 @@ function Medicines(props: { setCartCount: () => void }) {
 	const toggle = () => setModal(!modal);
 
 	const handleShowCartModal = (medicine: Medicine) => () => {
-		toggle();
-		setMedicineToModal(medicine);
+		const isConnected = patientService.isConnected();
+
+		if (isConnected) {
+			toggle();
+			setMedicineToModal(medicine);
+		} else {
+			toast.warn("Connectez-vous d'abord!");
+			history.push(ROUTE.LOGIN);
+		}
 	};
 
 	return (

@@ -12,7 +12,7 @@ function SignupDoctor() {
 			<Row isShadowed={false} className=" d-flex flex-column align-items-center">
 				<div className="border-case" style={{ width: '650px' }}>
 					<div className="border-case head-title text-center">
-						<p className="head-title ">INSCRIPTION</p>
+						<p className="head-title ">INSCRIPTION Médecin</p>
 					</div>
 
 					<div className=" d-flex flex-column ">
@@ -42,10 +42,16 @@ function SignupDoctor() {
 								</div>
 								<div className="d-flex justify-content-around align-items-center mb-4">
 									<div className="input-group mx-4">
-										<Input placeholder="Mot de pass ..." icon="key" iconPos="prepend" />
+										<Input
+											type="password"
+											placeholder="Mot de pass ..."
+											icon="key"
+											iconPos="prepend"
+										/>
 									</div>
 									<div className="input-group mx-4">
 										<Input
+											type="password"
 											placeholder="Confirmation du mot de pass ..."
 											icon="key"
 											iconPos="prepend"

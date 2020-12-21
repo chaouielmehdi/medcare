@@ -2,7 +2,6 @@ import React, { FC, ReactElement } from 'react';
 import { medicines } from '../../models/Medicine';
 import { orderService } from '../../services/orderService';
 import { patientService } from '../../services/patientService';
-import Empty from '../Empty/Empty';
 import Icon from '../Icon/Icon';
 import './MessageriePatientCard.css';
 
@@ -21,9 +20,12 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 	return (
 		<>
 			{cards.map((card, index) => (
-				<div className="box-shadow border-radius container-fluid d-flex justify-content-center mt-3 p-3">
+				<div
+					key={index}
+					className="box-shadow border-radius container-fluid d-flex justify-content-center mt-3 p-3"
+				>
 					<div className="d-flex justify-content-around container-fluid m-1 p-1">
-						<div className="col-2 d-flex align-items-center justify-content-center ">
+						<div className="col-1 d-flex align-items-center justify-content-center ">
 							<span className="c-green icon-medium">
 								<Icon className="mr-2" name="clinic-medical" />
 							</span>
@@ -46,16 +48,16 @@ const MessageriePatientCard: FC<IMessageriePatientCardProps> = ({ className }): 
 							</div>
 						</div>
 						<div className="col-3 d-flex flex-column">
-							<div className="d-flex justify-content-between m-0 p-0">
+							<div className="d-flex border-bottom justify-content-between m-0 p-0 mb-2">
 								<div>
-									<p className="font-weight-bold">Medicament</p>
+									<p className="font-weight-bold mb-2">Medicament</p>
 								</div>
 								<div>
-									<p className="font-weight-bold">Qte</p>
+									<p className="font-weight-bold mb-2">Qte</p>
 								</div>
 							</div>
 							{card.content?.map((content, index) => (
-								<div className="d-flex justify-content-between m-0 p-0">
+								<div key={index} className="d-flex justify-content-between m-0 p-0">
 									<div>
 										<span>{findMeds(content.medicineId)}</span>
 									</div>
