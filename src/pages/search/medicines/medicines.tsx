@@ -8,11 +8,22 @@ import AddToCartModal from '../../../components/modals/AddToCartModal';
 import Row from '../../../components/Row/Row';
 import { Medicine, medicines } from '../../../models/Medicine';
 import { pharmacies } from '../../../models/Pharmacy';
+import { medicineFilterService } from '../../../services/medicineFilterService';
 
 function Medicines(props: { setCartCount: () => void }) {
 	const { pharmacyId } = useParams<{ pharmacyId: string }>();
-	const pharmacy = pharmacies.find((pharmacy) => pharmacy.id === +pharmacyId);
-	const defaultInputValue = pharmacy?.name || '';
+
+	const getDefaultInputValue = (): string => {
+		// if pharmacy in url or medicine name in local storage
+		const pharmacy = pharmacies.find((pharmacy) => pharmacy.id === +pharmacyId);
+		let defaultInputValue = pharmacy?.name || medicineFilterService.get() || '';
+
+		medicineFilterService.remove();
+
+		return defaultInputValue;
+	};
+
+	const defaultInputValue = getDefaultInputValue();
 
 	const [filteredMedicines, setFilteredMedicines] = useState<Medicine[]>(medicines);
 	const [inputValue, setInputValue] = useState<string>(defaultInputValue);
@@ -22,7 +33,7 @@ function Medicines(props: { setCartCount: () => void }) {
 
 		setInputValue(value);
 	};
-	// eslint-disable-next-line
+
 	useEffect(() => {
 		const newMedicines = medicines.filter(
 			(medicine) =>

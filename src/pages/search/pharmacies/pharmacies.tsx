@@ -6,11 +6,22 @@ import PharmacyCard from '../../../components/PharmacyCard/PharmacyCard';
 import Row from '../../../components/Row/Row';
 import { cities, IdValueData } from '../../../models/IdValueData';
 import { pharmacies, Pharmacy } from '../../../models/Pharmacy';
+import { pharmacyFilterService } from '../../../services/pharmacyFilterService';
 
 function Pharmacies() {
+	const getDefaultInputValue = (): string => {
+		let defaultInputValue = pharmacyFilterService.get() || '';
+
+		pharmacyFilterService.remove();
+
+		return defaultInputValue;
+	};
+
+	const defaultInputValue = getDefaultInputValue();
+
 	const [filteredPharmacies, setPharmacies] = useState(pharmacies);
 	const [selectedCity, setSelectedCity] = useState<IdValueData>();
-	const [pharmacyName, setPharmacyName] = useState<string>();
+	const [pharmacyName, setPharmacyName] = useState<string>(defaultInputValue);
 
 	const getCity = (id: number): IdValueData | undefined => {
 		return cities.find((city) => id === city.id);
@@ -27,7 +38,7 @@ function Pharmacies() {
 		const value = event.target.value;
 		setPharmacyName(value);
 	};
-	// eslint-disable-next-line
+
 	useEffect(() => {
 		const filterByCity = (pharmacies: Pharmacy[]): Pharmacy[] => {
 			const cityName = selectedCity?.value;
@@ -68,6 +79,7 @@ function Pharmacies() {
 							icon="clinic-medical"
 							iconPos="prepend"
 							onChange={handlePharmacyChanged}
+							defaultValue={defaultInputValue}
 						/>
 					</div>
 					<div className="col-1">
