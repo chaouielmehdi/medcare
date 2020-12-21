@@ -11,9 +11,12 @@ export enum Store {
 	Patient = 'Patient',
 	Doctor = 'Doctor',
 	Pharmacy = 'Pharmacy',
-	DoctorFilter = 'DoctorFilter',
 	Order = 'Order',
 	Appointment = 'Appointment',
+
+	DoctorFilter = 'DoctorFilter',
+	MedicineFilter = 'MedicineFilter',
+	PharmacyFilter = 'PharmacyFilter',
 }
 
 export const storageService = {
@@ -53,17 +56,30 @@ export const storageService = {
 		getConnected: (): Pharmacy => storageService.get(Store.Pharmacy) as Pharmacy,
 	},
 
+	order: {
+		store: (value: Order[]): void => storageService.store(Store.Order, value),
+		get: (): Order[] => storageService.get(Store.Order) as Order[],
+	},
+
+	appointment: {
+		store: (value: Appointment[]): void => storageService.store(Store.Appointment, value),
+		get: (): Appointment[] => storageService.get(Store.Appointment) as Appointment[],
+	},
+
 	doctorFilter: {
 		store: (value: IDoctorFilterType): void => storageService.store(Store.DoctorFilter, value),
 		get: (): IDoctorFilterType => storageService.get(Store.DoctorFilter),
 		remove: (): void => storageService.remove(Store.DoctorFilter),
 	},
-	order: {
-		store: (value: Order[]): void => storageService.store(Store.Order, value),
-		get: (): Order[] => storageService.get(Store.Order) as Order[],
+
+	medicineFilter: {
+		store: (value: string): void => storageService.store(Store.MedicineFilter, value),
+		get: (): string => storageService.get(Store.MedicineFilter),
+		remove: (): void => storageService.remove(Store.MedicineFilter),
 	},
-	appointment: {
-		store: (value: Appointment[]): void => storageService.store(Store.Appointment, value),
-		get: (): Appointment[] => storageService.get(Store.Appointment) as Appointment[],
+	pharmacyFilter: {
+		store: (value: string): void => storageService.store(Store.PharmacyFilter, value),
+		get: (): string => storageService.get(Store.PharmacyFilter),
+		remove: (): void => storageService.remove(Store.PharmacyFilter),
 	},
 };

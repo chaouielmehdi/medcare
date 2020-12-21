@@ -1,5 +1,5 @@
-import { format, addDays } from 'date-fns';
-import React, { FC, useEffect, useState } from 'react';
+import { addDays, format } from 'date-fns';
+import React, { FC, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Appointment } from '../../models/Appointment';

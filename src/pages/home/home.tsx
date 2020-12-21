@@ -9,6 +9,8 @@ import Input from '../../components/Input/Input';
 import Row from '../../components/Row/Row';
 import { cities, doctorFields, IdValueData } from '../../models/IdValueData';
 import { doctorFilterService, IDoctorFilterType } from '../../services/doctorFilterService';
+import { medicineFilterService } from '../../services/medicineFilterService';
+import { pharmacyFilterService } from '../../services/pharmacyFilterService';
 import './home.css';
 
 function Home() {
@@ -81,6 +83,30 @@ function Home() {
 	// -----------------
 	// pharmacy filters
 	// -----------------
+	const [pharmacyName, setPharmacyName] = useState<string>('');
+
+	const handlePharmacyChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setPharmacyName(event.target.value);
+	};
+
+	const handleSearchPharmacy = () => {
+		pharmacyFilterService.add(pharmacyName);
+		history.push(ROUTE.PHARMACIES);
+	};
+
+	// -----------------
+	// medicine filters
+	// -----------------
+	const [medicineName, setMedicineName] = useState<string>('');
+
+	const handleMedicineChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setMedicineName(event.target.value);
+	};
+
+	const handleSearchMedicine = () => {
+		medicineFilterService.add(medicineName);
+		history.push(ROUTE.MEDICINES);
+	};
 
 	return (
 		<Container>
@@ -191,14 +217,34 @@ function Home() {
 				<div className="col-7 text-center align-self-center my-3">
 					<div className=" m-5">
 						<div className="input-group mb-3">
-							<Input placeholder="Chercher une pharmacie" icon="cart-plus" iconPos="prepend" />
-							<Button className="ml-5" icon="search" type="light">
+							<Input
+								onChange={handlePharmacyChanged}
+								placeholder="Chercher une pharmacie"
+								icon="cart-plus"
+								iconPos="prepend"
+							/>
+							<Button
+								onClick={handleSearchPharmacy}
+								className="ml-5"
+								icon="search"
+								type="light"
+							>
 								Chercher
 							</Button>
 						</div>
 						<div className="input-group mb-3">
-							<Input placeholder="Chercher un produit" icon="capsules" iconPos="prepend" />
-							<Button className="ml-5" icon="search" type="light">
+							<Input
+								onChange={handleMedicineChanged}
+								placeholder="Chercher un produit"
+								icon="capsules"
+								iconPos="prepend"
+							/>
+							<Button
+								onClick={handleSearchMedicine}
+								className="ml-5"
+								icon="search"
+								type="light"
+							>
 								Chercher
 							</Button>
 						</div>
