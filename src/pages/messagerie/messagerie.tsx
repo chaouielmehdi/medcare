@@ -1,31 +1,18 @@
 import React from 'react';
 import Container from '../../components/Container/Container';
-import Icon from '../../components/Icon/Icon';
+import Empty from '../../components/Empty/Empty';
+import MessagerieDoctorCard from '../../components/MessagerieCards/MessagerieDoctorCard';
 import MessageriePatientCard from '../../components/MessagerieCards/MessageriePatientCard';
 import Row from '../../components/Row/Row';
+import { appointmentService } from '../../services/appointmentService';
 import { orderService } from '../../services/orderService';
 import { patientService } from '../../services/patientService';
 
 function Messagerie() {
 	const patient = patientService.getConnected();
-	console.log(patient.id);
-
 	const orders = orderService.getAll() || [];
-	//console.log(orders[0].owner);
-
 	const cards = orders.filter((order) => patient.id === order.owner);
-	//console.log(cards);
-
-	/* const patient = patients.find(
-			(patient) => patient.email === inputs.email.value && patient.password === inputs.password.value
-		);
-		if (!patient) {
-			toast.error('Invalide email ou mot de passe');
-		} else {
-			patientService.login(patient);
-			window.location.href = '/messagerie';
-		} */
-
+	const appointements = appointmentService.get() || [];
 	return (
 		<Container>
 			<Row isShadowed={false} flex={{ align: 'center' }} className=" d-flex flex-column p-4">
@@ -38,6 +25,9 @@ function Messagerie() {
 						<p className="m-0">MESSAGERIE</p>
 					</div>
 
+					<Empty show={!cards.length && !appointements.length} className="my-4" />
+
+					<MessagerieDoctorCard />
 					<MessageriePatientCard />
 				</div>
 			</Row>
